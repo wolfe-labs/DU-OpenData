@@ -10,7 +10,7 @@ const DIR_TEMP = 'temp';
 const DIR_DIST = 'dist';
 const DIR_REPO = path.join(DIR_TEMP, 'du-api');
 
-const REGEX_FILE_LUA = /(.*?)\.lua$/gi;
+const REGEX_FILE_LUA = /(.*?)\.lua$/i;
 
 // Our entrypoint
 (async function main () {
