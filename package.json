@@ -1,0 +1,26 @@
+{
+  "name": "du-opendata",
+  "version": "0.0.1",
+  "description": "JSON-based data from Dual Universe",
+  "main": "index.js",
+  "scripts": {
+    "build-lua-codex": "node bin/BuildLuaCodex.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wolfe-labs/DU-OpenData.git"
+  },
+  "author": {
+    "name": "Matheus Pratta",
+    "email": "eu@matheus.io",
+    "url": "https://matheus.io"
+  },
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/wolfe-labs/DU-OpenData/issues"
+  },
+  "homepage": "https://github.com/wolfe-labs/DU-OpenData#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
