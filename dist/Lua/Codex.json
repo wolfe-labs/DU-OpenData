@@ -1,0 +1,4056 @@
+{
+  "classes": {
+    "Adjustor": {
+      "parent": "Engine",
+      "methods": {
+        "activate": {
+          "description": "Start the adjustor at full power (works only when run inside a cockpit or under remote control)"
+        },
+        "deactivate": {
+          "description": "Stops the adjustor (works only when run inside a cockpit or under remote control)"
+        },
+        "isActive": {
+          "description": "Checks if the adjustor is active",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getState": {
+          "deprecated": true,
+          "description": "Adjustor.getState() is deprecated, use Adjustor.isActive()."
+        },
+        "toggle": {
+          "description": "Toggle the state of the adjustor"
+        },
+        "setThrust": {
+          "description": "Set the exhaust thrust of the adjustor",
+          "params": [
+            {
+              "name": "thrust",
+              "type": "number",
+              "description": "The adjustor thrust in newtons (limited by the maximum thrust)"
+            }
+          ]
+        },
+        "getThrust": {
+          "description": "Returns the current exhaust thrust of the adjustor",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getMaxThrust": {
+          "description": "Returns the maximal exhaust thrust the adjustor can deliver",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getMaxThrustBase": {
+          "deprecated": true,
+          "description": "Adjustor.getMaxThrustBase() is deprecated, use Adjustor.getMaxThrust()."
+        },
+        "getThrustAxis": {
+          "description": "Returns the adjustor exhaust thrust direction in construct local coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getTorqueAxis": {
+          "description": "Returns the adjustor torque axis in construct local coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getWorldThrustAxis": {
+          "description": "Returns the adjustor exhaust thrust direction in world coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "thrustAxis": {
+          "deprecated": true,
+          "description": "Adjustor.thrustAxis() is deprecated, use Adjustor.getWorldThrustAxis()."
+        },
+        "getWorldTorqueAxis": {
+          "description": "Returns the adjustor torque axis in world coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "torqueAxis": {
+          "deprecated": true,
+          "description": "Adjustor.torqueAxis() is deprecated, use Adjustor.getWorldTorqueAxis()."
+        },
+        "isOutOfFuel": {
+          "deprecated": true,
+          "description": "Adjustor.isOutOfFuel() is deprecated."
+        },
+        "hasFunctionalFuelTank": {
+          "description": "@deprecated Adjustor.hasFunctionalFuelTank() is deprecated."
+        },
+        "getCurrentFuelRate": {
+          "deprecated": true,
+          "description": "Adjustor.getCurrentFuelRate()"
+        },
+        "getFuelRateEfficiency": {},
+        "getFuelConsumption": {
+          "deprecated": true,
+          "description": "Adjustor.getFuelConsumption()"
+        },
+        "getDistance": {
+          "description": "@deprecated Adjustor.getDistance()"
+        },
+        "getT50": {
+          "deprecated": true,
+          "description": "Adjustor.getT50() is deprecated."
+        }
+      }
+    },
+    "Airfoil": {
+      "parent": "Engine",
+      "methods": {
+        "getLift": {
+          "description": "Returns the current lift of the airfoil",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getThrust": {
+          "deprecated": true,
+          "description": "Airfoil.getThrust() is deprecated, use Airfoil.getLift()."
+        },
+        "getMaxLift": {
+          "description": "Gives the maximum lift that the airfoil can generate, under optimal conditions.",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getMaxThrustBase": {
+          "deprecated": true,
+          "description": "Airfoil.getMaxThrustBase() is deprecated, use Airfoil.getMaxLift()."
+        },
+        "getDrag": {
+          "description": "Returns the current drag of the airfoil",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getDragRatio": {
+          "description": "The ratio between lift and drag, depending of the aerodynamic profile of the airfoil",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getCurrentMinLift": {
+          "description": "Returns the minimal lift the airfoil can deliver at the moment (can be higher than zero),",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getMinThrust": {
+          "deprecated": true,
+          "description": "Airfoil.getMinThrust() is deprecated, use Airfoil.getCurrentMinLift()."
+        },
+        "getCurrentMaxLift": {
+          "description": "Returns the maximal lift the aifoil can deliver at the moment, which might depend on\nanything below this maximum lift, which defines the current max capability of the airfoil",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getMaxThrust": {
+          "deprecated": true,
+          "description": "Airfoil.getMaxThrust() is deprecated, use Airfoil.getCurrentMaxLift()."
+        },
+        "getMaxLiftEfficiency": {
+          "description": "Returns the ratio between the current maximum lift and the optimal maximum lift",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getMaxThrustEfficiency": {
+          "deprecated": true,
+          "description": "Airfoil.getMaxThrustEfficiency() is deprecated, use Airfoil.getMaxLiftEfficiency()."
+        },
+        "getLiftAxis": {
+          "description": "Returns the airfoil lift direction in construct local coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getTorqueAxis": {
+          "description": "Returns the airfoil torque axis in construct local coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getWorldLiftAxis": {
+          "description": "Returns the airfoil lift direction in world coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "thrustAxis": {
+          "deprecated": true,
+          "description": "Airfoil.thrustAxis() is deprecated, use Airfoil.getWorldLiftAxis()."
+        },
+        "getWorldTorqueAxis": {
+          "description": "Returns the adjustor torque axis in world coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "torqueAxis": {
+          "deprecated": true,
+          "description": "Airfoil.torqueAxis() is deprecated, use Airfoil.getWorldTorqueAxis()."
+        },
+        "isStalled": {
+          "description": "Checks if the airfoil is stalled",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getStallAngle": {
+          "description": "Returns the airfoil stall angle",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getMinAngle": {
+          "description": "Returns the minimum angle to produce the maximum lift of the airfoil",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getMaxAngle": {
+          "description": "Returns the maximum angle to produce the maximum lift of the airfoil",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "activate": {
+          "deprecated": true,
+          "description": "Airfoil.activate() is deprecated."
+        },
+        "deactivate": {
+          "description": "@deprecated Airfoil.deactivate() is deprecated."
+        },
+        "getState": {
+          "deprecated": true,
+          "description": "Airfoil.getState() is deprecated."
+        },
+        "toggle": {},
+        "setThrust": {
+          "deprecated": true,
+          "description": "Airfoil.setThrust(thrust) is deprecated."
+        },
+        "isOutOfFuel": {
+          "description": "@deprecated Airfoil.isOutOfFuel() is deprecated."
+        },
+        "hasFunctionalFuelTank": {
+          "deprecated": true,
+          "description": "Airfoil.hasFunctionalFuelTank() is deprecated."
+        },
+        "getCurrentFuelRate": {},
+        "getFuelRateEfficiency": {
+          "deprecated": true,
+          "description": "Airfoil.getFuelRateEfficiency() is deprecated."
+        },
+        "getFuelConsumption": {
+          "description": "@deprecated Airfoil.getFuelConsumption() is deprecated."
+        },
+        "getDistance": {
+          "deprecated": true,
+          "description": "Airfoil.getDistance() is deprecated."
+        },
+        "getT50": {}
+      }
+    },
+    "AntiGravityGenerator": {
+      "parent": "Element",
+      "methods": {
+        "activate": {
+          "description": "Activate the anti-gravity generator"
+        },
+        "deactivate": {},
+        "isActive": {
+          "description": "Returns the state of activation of the anti-gravity generator",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getState": {
+          "deprecated": true,
+          "description": "AntiGravityGenerator.getState() is deprecated, use AntiGravityGenerator.isActive() instead."
+        },
+        "toggle": {
+          "description": "Toggle the anti-gravity generator"
+        },
+        "getFieldStrength": {
+          "description": "Returns the strength of the anti-gravitational field",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getCompensationRate": {
+          "description": "Returns the current rate of compensation of the gravitational field",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getFieldPower": {
+          "description": "Returns the current power of the gravitational field",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getPulsorCount": {
+          "description": "Returns the number of pulsors linked to the anti-gravity generator",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "setTargetAltitude": {
+          "description": "Set the target altitude for the anti-gravity field. Cannot be called from onFlush",
+          "params": [
+            {
+              "name": "altitude",
+              "type": "number",
+              "description": "The target altitude in meters. It will be reached with a slow acceleration (not instantaneous)"
+            }
+          ]
+        },
+        "setBaseAltitude": {
+          "deprecated": true,
+          "description": "AntiGravityGenerator.setBaseAltitude(altitude) is deprecated, use AntiGravityGenerator.setTargetAltitude(altitude) instead."
+        },
+        "getTargetAltitude": {
+          "description": "Returns the target altitude defined for the anti-gravitational field",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getBaseAltitude": {
+          "description": "Returns the current base altitude of the anti-gravitational field",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        }
+      }
+    },
+    "BaseShieldGenerator": {
+      "parent": "Element",
+      "events": {
+        "onToggled": {
+          "description": "Emitted when we started or stopped the shield generator",
+          "params": [
+            {
+              "name": "active",
+              "type": "integer",
+              "description": "1 if the element was activated, 0 otherwise"
+            }
+          ]
+        },
+        "onAbsorbed": {
+          "description": "Emitted when the shield absorbed incoming damage",
+          "params": [
+            {
+              "name": "hitpoints",
+              "type": "number",
+              "description": "Damage the shield absorbed"
+            }
+          ]
+        },
+        "onDown": {
+          "description": "Emitted when the shield hit points reached 0 due to damage"
+        },
+        "onRestored": {
+          "description": "Emitted when the shield hit points were fully restored"
+        },
+        "onEnterLockdown": {
+          "description": "Emitted when the shield enters lockdown"
+        },
+        "onLeaveLockdown": {
+          "description": "Emitted when the shield exits the lockdown"
+        }
+      },
+      "methods": {
+        "activate": {
+          "description": "Activate the shield"
+        },
+        "deactivate": {
+          "description": "Deactivate the shield"
+        },
+        "toggle": {
+          "description": "Toggle the state of the shield"
+        },
+        "isActive": {
+          "description": "Returns the activation state of the shield",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getState": {
+          "deprecated": true,
+          "description": "BaseShieldGenerator.getState() is deprecated, use BaseShieldGenerator.isActive() instead."
+        },
+        "getShieldHitpoints": {
+          "description": "Returns the current hit points of the shield",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getMaxShieldHitpoints": {
+          "description": "Returns the maximal hit points of the shield",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getResistances": {
+          "description": "Returns distribution of resistance pool over resistance types",
+          "returns": [
+            {
+              "type": "table",
+              "description": "resistances Resistance to damage type {antimatter, electromagnetic, kinetic, thermic}"
+            }
+          ]
+        },
+        "setResistances": {
+          "description": "Distribute the resistance pool according to damage type\n@param thermic number Thermic damage resistance",
+          "params": [
+            {
+              "name": "antimatter",
+              "type": "number",
+              "description": "Antimatter damage resistance"
+            },
+            {
+              "name": "kinetic",
+              "type": "number",
+              "description": "Kinetic damage resistance"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getResistancesCooldown": {
+          "description": "Returns time after which adjusting resistances is possible again",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getResistancesMaxCooldown": {
+          "description": "Returns maximal cooldown between adjusting resistances",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getResistancesPool": {
+          "description": "Returns total resistance pool that may be distributed",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getResistancesRemaining": {
+          "description": "Returns the remaining amount of the resistance pool that can be distributed",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getStressRatio": {
+          "description": "Returns ratio per damage type of recent weapon impacts after applying resistance",
+          "returns": [
+            {
+              "type": "table",
+              "description": "stress Stress ratio due to damage type {antimatter, electromagnetic, kinetic, thermic}"
+            }
+          ]
+        },
+        "getStressRatioRaw": {
+          "description": "Returns ratio per damage type of recent weapon impacts without resistance",
+          "returns": [
+            {
+              "type": "table",
+              "description": "stress Stress ratio due to damage type {antimatter, electromagnetic, kinetic, thermic}"
+            }
+          ]
+        },
+        "getStressHitpoints": {
+          "description": "Returns stress, that is the total hit points of recent weapon impacts after applying resistance",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getStressHitpointsRaw": {
+          "description": "Returns stress, that is the total hit points of recent weapon impacts without resistance",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "inLockdown": {
+          "description": "Returns whether the base shield is currently in lockdown",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getLockdownRemaining": {
+          "description": "Returns the remaining time of the base shield lockdown",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getLockdownExitTime": {
+          "description": "Returns the hour since midnight of the preferred lockdown exit",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "setLockdownExitTime": {
+          "description": "Set hour since midnight for the preferred lockdown exit",
+          "params": [
+            {
+              "name": "hour",
+              "type": "integer",
+              "description": "Preferred lockdown exit hour UTC"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        }
+      }
+    },
+    "Construct": {
+      "methods": {
+        "getName": {
+          "description": "Returns the name of the construct",
+          "returns": [
+            {
+              "type": "string",
+              "description": ""
+            }
+          ]
+        },
+        "getId": {
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getOwner": {
+          "description": "Returns the owner entity",
+          "returns": [
+            {
+              "type": "table",
+              "description": "entity The owner entity table with fields {[int] id, [bool] isOrganization} describing the owner. Use system.getPlayerName(id) and system.getOrganization(id) to retrieve info about it"
+            }
+          ]
+        },
+        "getCreator": {
+          "returns": [
+            {
+              "type": "integer",
+              "description": "entity The owner entity table with fields {[int] id, [bool] isOrganization} describing the owner. Use system.getPlayerName(id) and system.getOrganization(id) to retrieve info about it"
+            }
+          ]
+        },
+        "isWarping": {
+          "description": "Checks if the construct is currently warping",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getWarpState": {
+          "returns": [
+            {
+              "type": "integer",
+              "description": "state The current warp state index (Idle = 1, Engage = 2, Align = 3, Spool = 4, Accelerate = 5, Cruise = 6, Decelerate = 7, Stopping = 8, Disengage = 9)"
+            }
+          ]
+        },
+        "isInPvPZone": {
+          "description": "Checks if the construct is in PvP zone",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getDistanceToSafeZone": {
+          "returns": [
+            {
+              "type": "number",
+              "description": "distance The distance to the nearest safe zone border in meters. Positive value if the construct is outside of any safe zone"
+            }
+          ]
+        },
+        "getPvPTimer": {
+          "description": "Returns the current construct PvP timer state",
+          "returns": [
+            {
+              "type": "number",
+              "description": "time The remaining time of the PvP timer, or 0.0 if elapsed"
+            }
+          ]
+        },
+        "getMass": {
+          "description": "Returns the mass of the construct",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getInertialMass": {
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getInertialTensor": {
+          "description": "Returns the inertial tensor of the construct",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getCenterOfMass": {
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getWorldCenterOfMass": {
+          "description": "Returns the position of the center of mass of the construct, in world coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getCrossSection": {
+          "returns": [
+            {
+              "type": "number",
+              "description": "value The construct's surface exposed in the current direction of movement in meters square"
+            }
+          ]
+        },
+        "getSize": {
+          "description": "Returns the size of the building zone of the construct",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getBoundingBoxSize": {
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getBoundingBoxCenter": {
+          "description": "Returns the position of the center of bounding box of the construct in local construct coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getMaxSpeed": {
+          "description": "Returns the max speed along current moving direction",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value The max speed along current moving direction in m/s"
+            }
+          ]
+        },
+        "getMaxAngularSpeed": {
+          "returns": [
+            {
+              "type": "number",
+              "description": "value The max angular speed in rad/s"
+            }
+          ]
+        },
+        "getMaxSpeedPerAxis": {
+          "description": "Returns the max speed per axis",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The max speed along axes {x, -x, y, -y, z, -z} in m/s"
+            }
+          ]
+        },
+        "getMaxThrustAlongAxis": {
+          "description": "parameters designate here the maximal positive and negative base force the construct is capable of producing along the chosen\nthrust your ship is capable of producing in space or in atmosphere, as well as the max reverse thrust. These are theoretical\naccurate current max thrust capacity of your ship, which depends on various local conditions (atmospheric density,\nThis is typically used in conjunction with the Control Unit throttle to setup the desired forward acceleration",
+          "params": [
+            {
+              "name": "taglist",
+              "type": "string",
+              "description": "Comma (for union) or space (for intersection) separated list of tags. You can set tags directly on the engines in the right-click menu"
+            }
+          ],
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The kinematics parameters in Newtons in the order: atmoRange.FMaxPlus, atmoRange.FMaxMinus, spaceRange.FMaxPlus, spaceRange.FMaxMinus"
+            }
+          ]
+        },
+        "getCurrentBrake": {
+          "description": "Returns the current braking force generated by construct brakes",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value The current braking force in Newtons"
+            }
+          ]
+        },
+        "getMaxBrake": {
+          "returns": [
+            {
+              "type": "number",
+              "description": "value The maximum braking force in Newtons"
+            }
+          ]
+        },
+        "getWorldPosition": {
+          "description": "Returns the world position of the construct",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The xyz world coordinates of the construct center position in meters"
+            }
+          ]
+        },
+        "getVelocity": {
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Relative linear velocity vector, in construct local coordinates in m/s"
+            }
+          ]
+        },
+        "getWorldVelocity": {
+          "description": "The construct's linear velocity, relative to its parent, in world coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Relative linear velocity vector, in world coordinates in m/s"
+            }
+          ]
+        },
+        "getAbsoluteVelocity": {
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Absolute linear velocity vector, in construct local coordinates in m/s"
+            }
+          ]
+        },
+        "getWorldAbsoluteVelocity": {
+          "description": "The construct's absolute linear velocity, in world coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Absolute linear velocity vector, in world coordinates in m/s"
+            }
+          ]
+        },
+        "getAcceleration": {
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Linear acceleration vector, in construct local coordinates in m/s2"
+            }
+          ]
+        },
+        "getWorldAcceleration": {
+          "description": "The construct's linear acceleration, in world coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Linear acceleration vector, in world coordinates in m/s2"
+            }
+          ]
+        },
+        "getAngularVelocity": {
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Angular velocity vector, in construct local coordinates in rad/s"
+            }
+          ]
+        },
+        "getWorldAngularVelocity": {
+          "description": "The construct's angular velocity, in world coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Angular velocity vector, in world coordinates in rad/s"
+            }
+          ]
+        },
+        "getAngularAcceleration": {
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Angular acceleration vector, in construct local coordinates in rad/s2"
+            }
+          ]
+        },
+        "getWorldAngularAcceleration": {
+          "description": "The construct's angular acceleration, in world coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Angular acceleration vector, in world coordinates in rad/s2"
+            }
+          ]
+        },
+        "getWorldAirFrictionAcceleration": {
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The xyz world acceleration generated by air resistance"
+            }
+          ]
+        },
+        "getWorldAirFrictionAngularAcceleration": {
+          "description": "Returns the acceleration torque generated by air resistance",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The xyz world acceleration torque generated by air resistance"
+            }
+          ]
+        },
+        "getFrictionBurnSpeed": {
+          "returns": [
+            {
+              "type": "number",
+              "description": "value The construct speed to get damages due to friction in m/s"
+            }
+          ]
+        },
+        "getForward": {
+          "description": "Returns the forward vector of the construct coordinates system",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The forward vector of the construct coordinates system. It's a static value equal to (0,1,0)"
+            }
+          ]
+        },
+        "getRight": {
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The right vector of the construct coordinates system. It's a static value equal to (1,0,0)"
+            }
+          ]
+        },
+        "getUp": {
+          "description": "Returns the up direction vector of the construct coordinates system",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The up vector of the construct coordinates system.. It's a static value equal to (0,0,1)"
+            }
+          ]
+        },
+        "getWorldForward": {
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The forward direction vector of the construct, in world coordinates"
+            }
+          ]
+        },
+        "getWorldRight": {
+          "description": "Returns the right direction vector of the construct, in world coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The right direction vector of the construct, in world coordinates"
+            }
+          ]
+        },
+        "getWorldUp": {
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The up direction vector of the construct, in world coordinates"
+            }
+          ]
+        },
+        "getOrientationUnitId": {
+          "description": "Returns the local id of the current active orientation unit (core unit or gyro unit)",
+          "returns": [
+            {
+              "type": "integer",
+              "description": "value local id of the current active orientation unit (core unit or gyro unit)"
+            }
+          ]
+        },
+        "getOrientationForward": {
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Forward direction vector of the active orientation unit, in construct local coordinates"
+            }
+          ]
+        },
+        "getOrientationRight": {
+          "description": "Returns the right direction vector of the active orientation unit, in construct local coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Right direction vector of the active orientation unit, in construct local coordinates"
+            }
+          ]
+        },
+        "getOrientationUp": {
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Up direction vector of the active orientation unit, in construct local coordinates"
+            }
+          ]
+        },
+        "getWorldOrientationForward": {
+          "description": "Returns the forward direction vector of the active orientation unit, in world coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Forward direction vector of the active orientation unit, in world coordinates"
+            }
+          ]
+        },
+        "getWorldOrientationRight": {
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Right direction vector of the active orientation unit, in world coordinates"
+            }
+          ]
+        },
+        "getWorldOrientationUp": {
+          "description": "Returns the up direction vector of the active orientation unit, in world coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Up direction vector of the active orientation unit, in world coordinates"
+            }
+          ]
+        },
+        "getParent": {
+          "description": "Returns the id of the parent construct of our active construct",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getClosestParent": {
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getCloseParents": {
+          "description": "Returns the list of ids of nearby constructs, on which the construct can dock",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getParentPosition": {
+          "description": "Returns the position of the construct's parent when docked in local coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The position of the construct's parent in local coordinates"
+            }
+          ]
+        },
+        "getParentWorldPosition": {
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The position of the construct's parent in world coordinates"
+            }
+          ]
+        },
+        "getParentForward": {
+          "description": "Returns the construct's parent forward direction vector, in local coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The construct's parent forward direction vector, in local coordinates"
+            }
+          ]
+        },
+        "getParentRight": {
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The construct's parent right direction vector, in construct local coordinates"
+            }
+          ]
+        },
+        "getParentUp": {
+          "description": "Returns the construct's parent up direction vector, in construct local coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The construct's parent up direction vector, in construct local coordinates"
+            }
+          ]
+        },
+        "getParentWorldForward": {
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The construct's parent forward direction vector, in world coordinates"
+            }
+          ]
+        },
+        "getParentWorldRight": {
+          "description": "Returns the construct's parent right direction vector, in world coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The construct's parent right direction vector, in world coordinates"
+            }
+          ]
+        },
+        "getParentWorldUp": {
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The construct's parent up direction vector, in world coordinates"
+            }
+          ]
+        },
+        "getPlayersOnBoard": {
+          "description": "Returns the list of player IDs on board the construct",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getPlayersOnBoardInVRStation": {
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "isPlayerBoarded": {
+          "description": "Checks if the given player is on board in the construct",
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The player id"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "isPlayerBoardedInVRStation": {
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The player id"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getBoardedPlayerMass": {
+          "description": "Returns the mass of the given player or surrogate if it is on board the construct",
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The player id"
+            }
+          ],
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getBoardedInVRStationAvatarMass": {
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The player id"
+            }
+          ],
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getDockedConstructs": {
+          "description": "Returns the list of IDs of constructs docked to the construct",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "isConstructDocked": {
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The construct id"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getDockedConstructMass": {
+          "description": "Returns the mass of the given construct if it is docked to the construct",
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The construct id"
+            }
+          ],
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "setDockingMode": {
+          "description": "Sets the docking mode",
+          "params": [
+            {
+              "name": "mode",
+              "type": "integer",
+              "description": "The docking mode (Manual = 0, Automatic = 1, Semi-automatic = 2)"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getDockingMode": {
+          "returns": [
+            {
+              "type": "integer",
+              "description": "mode The docking mode (Manual = 0, Automatic = 1, Semi-automatic = 2)"
+            }
+          ]
+        },
+        "dock": {
+          "description": "Sends a request to dock to the given construct. Limited to piloting controllers",
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The parent construct id"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "undock": {
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "forceDeboard": {
+          "description": "Sends a request to deboard a player or surrogate with the given id",
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The player id"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "forceUndock": {
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The construct id"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "forceInterruptVRSession": {
+          "description": "Sends a request to interrupt the surrogate session of a player with the given id",
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The player id"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        }
+      },
+      "events": {
+        "onDocked": {
+          "description": "Emitted when the construct becomes docked",
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The parent id"
+            }
+          ]
+        },
+        "onUndocked": {
+          "description": "Emitted when the construct is undocked",
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The previous parent id"
+            }
+          ]
+        },
+        "onPlayerBoarded": {
+          "description": "Emitted when a player or surrogate boards the construct",
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The id of the boarding player"
+            }
+          ]
+        },
+        "onVRStationEntered": {
+          "description": "Emitted when a player enters a VR Station",
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The id of the boarding player"
+            }
+          ]
+        },
+        "onConstructDocked": {
+          "description": "Emitted when another construct docks this construct",
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The id of the docking construct"
+            }
+          ]
+        },
+        "onPvPTimer": {
+          "description": "Emitted when the PvP timer started or elapsed",
+          "params": [
+            {
+              "name": "active",
+              "type": "boolean",
+              "description": "1 if the timer started, false when the timer elapsed"
+            }
+          ]
+        }
+      }
+    },
+    "ControlUnit": {
+      "parent": "Element",
+      "methods": {
+        "exit": {
+          "description": "Stops the Control Unit's Lua code and exits. Warning: calling this might cause your ship to fall from the sky,\nthinks that the ship has safely landed."
+        },
+        "getMasterPlayerId": {
+          "deprecated": true,
+          "description": "ControlUnit.getMasterPlayerId() is deprecated, use player.getId() instead."
+        },
+        "getMasterPlayerOrgIds": {
+          "description": "@deprecated ControlUnit.getMasterPlayerOrgIds() is deprecated, use player.getOrgIds() instead."
+        },
+        "getMasterPlayerPosition": {
+          "deprecated": true,
+          "description": "ControlUnit.getMasterPlayerPosition() is deprecated, use player.getPosition() instead."
+        },
+        "getMasterPlayerWorldPosition": {},
+        "getMasterPlayerForward": {
+          "deprecated": true,
+          "description": "ControlUnit.getMasterPlayerForward() is deprecated, use player.getForward() instead."
+        },
+        "getMasterPlayerUp": {
+          "description": "@deprecated ControlUnit.getMasterPlayerUp() is deprecated, use player.getUp() instead."
+        },
+        "getMasterPlayerRight": {
+          "deprecated": true,
+          "description": "ControlUnit.getMasterPlayerRight() is deprecated, use player.getRight() instead."
+        },
+        "getMasterPlayerWorldForward": {},
+        "getMasterPlayerWorldUp": {
+          "deprecated": true,
+          "description": "ControlUnit.getMasterPlayerWorldUp() is deprecated, use player.getWorldUp() instead."
+        },
+        "getMasterPlayerWorldRight": {
+          "description": "@deprecated ControlUnit.getMasterPlayerWorldRight() is deprecated, use player.getWorldRight() instead."
+        },
+        "isMasterPlayerSeated": {
+          "deprecated": true,
+          "description": "ControlUnit.isMasterPlayerSeated() is deprecated, use player.isSeated() instead."
+        },
+        "getMasterPlayerSeatId": {},
+        "getMasterPlayerParent": {
+          "deprecated": true,
+          "description": "ControlUnit.getMasterPlayerParent() is deprecated, use player.getParent() instead."
+        },
+        "getMasterPlayerMass": {
+          "description": "@deprecated ControlUnit.getMasterPlayerMass() is deprecated, use player.getMass() instead."
+        },
+        "setTimer": {
+          "description": "Set up a timer with a given tag in a given period. This will start to trigger the 'onTimer' event with\n@param period number The period of the timer, in seconds. The time resolution is limited by the framerate here, so you cannot set arbitrarily fast timers",
+          "params": [
+            {
+              "name": "tag",
+              "type": "string",
+              "description": "The tag of the timer, as a string, which will be used in the 'onTimer' event to identify this particular timer"
+            }
+          ]
+        },
+        "stopTimer": {
+          "description": "Stop the timer with the given tag",
+          "params": [
+            {
+              "name": "tag",
+              "type": "string",
+              "description": "The tag of the timer to stop, as a string"
+            }
+          ]
+        },
+        "getAtmosphereDensity": {
+          "description": "Returns the ambient atmospheric density",
+          "returns": [
+            {
+              "type": "number",
+              "description": "density The atmospheric density(between 0 and 1)"
+            }
+          ]
+        },
+        "getClosestPlanetInfluence": {
+          "description": "Returns the influence rate of the nearest planet",
+          "returns": [
+            {
+              "type": "number",
+              "description": "rate The planet influence rate(between 0 and 1)"
+            }
+          ]
+        },
+        "hasDRM": {
+          "description": "Checks if the control unit is protected by DRM",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "isRemoteControlled": {
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "setEngineCommand": {
+          "description": "Automatically assign the engines within the taglist\nIf engines designated by the tags are not capable of producing the desired command, setEngineCommand will try to do its best\nThis function must be used on a piloting controller in onFlush event\n@param keepForceCollinearity boolean Forces the resulting acceleration vector to be collinear to the acceleration parameter\n@param priority3SubTags string Comma (for union) or space (for intersection) separated list of tags of included engines to use as priority 3",
+          "params": [
+            {
+              "name": "taglist",
+              "type": "string",
+              "description": "Comma (for union) or space (for intersection) separated list of tags. You can set tags directly on the engines in the right-click menu"
+            },
+            {
+              "name": "angularAcceleration",
+              "type": "table",
+              "description": "The desired angular acceleration expressed in world coordinates in rad/s2"
+            },
+            {
+              "name": "keepTorqueCollinearity",
+              "type": "boolean",
+              "description": "Forces the resulting angular acceleration vector to be collinear to the angular acceleration parameter"
+            },
+            {
+              "name": "priority2SubTags",
+              "type": "string",
+              "description": "Comma (for union) or space (for intersection) separated list of tags of included engines to use as priority 2"
+            },
+            {
+              "name": "toleranceRatioToStopCommand",
+              "type": "number",
+              "description": "When going through with priorities, if we reach a command that is achieved within this tolerance, we will stop there"
+            }
+          ]
+        },
+        "setEngineThrust": {
+          "description": "Sets the thrust values for all engines in the tag list\n@param thrust number The desired thrust in newtons (note that for boosters, any non zero value here will set them to 100%)",
+          "params": [
+            {
+              "name": "taglist",
+              "type": "string",
+              "description": "Comma separated list of tags. You can set tags directly on the engines in the right-click menu"
+            }
+          ]
+        },
+        "getEngineThrust": {
+          "description": "Returns the total thrust values of all engines in the tag list",
+          "params": [
+            {
+              "name": "taglist",
+              "type": "string",
+              "description": "Comma separated list of tags. You can set tags directly on the engines in the right-click menu"
+            }
+          ],
+          "returns": [
+            {
+              "type": "table",
+              "description": "The total thrust in newtons"
+            }
+          ]
+        },
+        "setAxisCommandValue": {
+          "description": "Set the value of throttle in the cockpit, which will be displayed in the cockpit widget when flying\n@param commandValue number In 'by throttle', the value of the throttle position: -1 = full reverse, 1 = full forward. Or In 'By Target Speed', the value of the target speed in km/h",
+          "params": [
+            {
+              "name": "axis",
+              "type": "integer",
+              "description": "Longitudinal = 0, lateral = 1, vertical = 2"
+            }
+          ]
+        },
+        "getAxisCommandValue": {
+          "description": "Get the value of throttle in the cockpit",
+          "params": [
+            {
+              "name": "axis",
+              "type": "integer",
+              "description": "Longitudinal = 0, lateral = 1, vertical = 2"
+            }
+          ],
+          "returns": [
+            {
+              "type": "number",
+              "description": "value In travel mode, return the value of the throttle position: -1 = full reverse, 1 = full forward or in cruise mode, return the value of the target speed"
+            }
+          ]
+        },
+        "setupAxisCommandProperties": {
+          "description": "Set the properties of an axis command\nThese properties will be used to display the command in UI",
+          "params": [
+            {
+              "name": "axis",
+              "type": "integer",
+              "description": "Longitudinal = 0, lateral = 1, vertical = 2"
+            },
+            {
+              "name": "targetSpeedRanges",
+              "type": "table",
+              "description": "This is to specify the cruise control target speed ranges (for now, only for the longitudinal axis) in m/s"
+            }
+          ]
+        },
+        "getControlMode": {
+          "description": "Returns the current control mode. The mode is set by clicking the UI button or using the associated keybinding",
+          "returns": [
+            {
+              "type": "integer",
+              "description": "The current control mode (for now, only 2 are available, 0 and 1)"
+            }
+          ]
+        },
+        "getControlMasterModeId": {
+          "deprecated": true,
+          "description": "ControlUnit.getControlMasterModeId() is deprecated, use ControlUnit.getControlMode() instead."
+        },
+        "cancelCurrentControlMasterMode": {
+          "description": "Cancel the current master mode in use"
+        },
+        "isMouseControlActivated": {
+          "description": "Check if a mouse control scheme is selected",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "isMouseDirectControlActivated": {
+          "description": "Check if the mouse control direct scheme is selected",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "isMouseVirtualJoystickActivated": {
+          "description": "Check if the mouse control virtual joystick scheme is selected",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "activateGroundEngineAltitudeStabilization": {
+          "description": "The ground engines will stabilize to this altitude within their limits\nThis includes VerticalBooster and HoverEngine",
+          "params": [
+            {
+              "name": "targetAltitude",
+              "type": "number",
+              "description": "The stabilization target altitude in m"
+            }
+          ]
+        },
+        "getSurfaceEngineAltitudeStabilization": {
+          "description": "Return the ground engines' stabilization altitude",
+          "returns": [
+            {
+              "type": "number",
+              "description": "Stab altitude in m or 0 if none is set"
+            }
+          ]
+        },
+        "deactivateGroundEngineAltitudeStabilization": {
+          "description": "The ground engines will behave like regular engine\nThis function must be used on a piloting controller"
+        },
+        "computeGroundEngineAltitudeStabilizationCapabilities": {
+          "description": "Returns ground engine stabilization altitude capabilities (lower and upper ranges)",
+          "returns": [
+            {
+              "type": "table",
+              "description": "range Stabilization altitude capabilities for the least powerful engine and the most powerful engine"
+            }
+          ]
+        },
+        "getThrottle": {
+          "description": "Return the current throttle value",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value Throttle value between -100 and 100"
+            }
+          ]
+        },
+        "setWidgetControlModeLabel": {
+          "description": "Set the label of a control mode buttons shown in the control unit widget\n@param label string The display name of the control mode, displayed on the widget button",
+          "params": [
+            {
+              "name": "modeId",
+              "type": "integer",
+              "description": "The control mode: 0=Travel Mode, 1=Cruise Control by default"
+            }
+          ]
+        },
+        "setupControlMasterModeProperties": {
+          "deprecated": true,
+          "description": "ControlUnit.setupControlMasterModeProperties() is deprecated, use ControlUnit.setWidgetControlModeLabel() instead."
+        },
+        "isAnyLandingGearDeployed": {
+          "description": "Checks if any landing gear is deployed",
+          "returns": [
+            {
+              "type": "0",
+              "description": "or 1 1 if any landing gear is deployed"
+            }
+          ]
+        },
+        "isAnyLandingGearExtended": {
+          "deprecated": true,
+          "description": "ControlUnit.isAnyLandingGearDeployed() is deprecated, use ControlUnit.isAnyLandingGearExtended() instead."
+        },
+        "deployLandingGears": {
+          "description": "Deploy a end"
+        },
+        "extendLandingGears": {
+          "deprecated": true,
+          "description": "ControlUnit.extendLandingGears() is deprecated, use ControlUnit.deployLandingGears() instead."
+        },
+        "retractLandingGears": {},
+        "isAnyHeadlightSwitchedOn": {
+          "description": "Check construct lights status",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "switchOnHeadlights": {
+          "description": "Turn on the construct headlights"
+        },
+        "switchOffHeadlights": {
+          "description": "Turn off the construct headlights"
+        }
+      },
+      "events": {
+        "onTimer": {
+          "description": "Emitted when the timer with the tag 'tag' is ticking",
+          "params": [
+            {
+              "name": "tag",
+              "type": "string",
+              "description": "The tag of the timer that just ticked (see setTimer to set a timer with a given tag)"
+            }
+          ]
+        }
+      }
+    },
+    "Counter": {
+      "parent": "Element",
+      "methods": {
+        "getIndex": {
+          "description": "Returns the index of the current active output plug",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getCounterState": {
+          "deprecated": true,
+          "description": "Counter.getCounterState() is deprecated, use Counter.getIndex() instead."
+        },
+        "getMaxIndex": {
+          "description": "Returns the maximum index of the counter",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "nextIndex": {
+          "description": "Moves the next counter index"
+        },
+        "next": {
+          "deprecated": true,
+          "description": "Counter.next() is deprecated, use Counter.nextIndex() instead."
+        },
+        "setIndex": {
+          "description": "Sets the counter index",
+          "params": [
+            {
+              "name": "index",
+              "type": "integer",
+              "description": "The index of the plug to activate"
+            }
+          ]
+        }
+      }
+    },
+    "DetectionZone": {
+      "parent": "Element",
+      "methods": {
+        "getRadius": {
+          "description": "Returns the detection zone radius",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getPlayers": {
+          "description": "Returns the list of ids of the players in the detection zone",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        }
+      },
+      "events": {
+        "onEnter": {
+          "description": "Emitted when a player enters in the detection zone",
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The ID of the player. Use system.getPlayerName(id) to retrieve its name"
+            }
+          ]
+        },
+        "onLeave": {
+          "description": "Emitted when a player leaves in the detection zone",
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The ID of the player. Use system.getPlayerName(id) to retrieve its name"
+            }
+          ]
+        }
+      }
+    },
+    "Element": {
+      "methods": {
+        "showWidget": {
+          "description": "Show the element widget in the in-game widget stack"
+        },
+        "show": {
+          "deprecated": true,
+          "description": "Element.show() is deprecated, use Element.showWidget() instead."
+        },
+        "hideWidget": {
+          "description": "Hide the element widget in the in-game widget stack"
+        },
+        "hide": {
+          "deprecated": true,
+          "description": "Element.hide() is deprecated, use Element.hideWidget() instead."
+        },
+        "getWidgetType": {
+          "description": "Returns the widget type compatible with the element data",
+          "returns": [
+            {
+              "type": "string",
+              "description": ""
+            }
+          ]
+        },
+        "getWidgetData": {
+          "description": "Returns the element data as JSON",
+          "returns": [
+            {
+              "type": "string",
+              "description": ""
+            }
+          ]
+        },
+        "getData": {
+          "deprecated": true,
+          "description": "Element.getData() is deprecated, use Element.getWidgetData() instead."
+        },
+        "getWidgetDataId": {
+          "description": "Returns the element data ID",
+          "returns": [
+            {
+              "type": "string",
+              "description": ""
+            }
+          ]
+        },
+        "getDataId": {
+          "deprecated": true,
+          "description": "Element.getDataId() is deprecated, use Element.getWidgetDataId() instead."
+        },
+        "getName": {
+          "description": "Returns the element name",
+          "returns": [
+            {
+              "type": "string",
+              "description": ""
+            }
+          ]
+        },
+        "getClass": {
+          "description": "Returns the class of the Element",
+          "returns": [
+            {
+              "type": "string",
+              "description": ""
+            }
+          ]
+        },
+        "getElementClass": {
+          "deprecated": true,
+          "description": "Element.getElementClass() is deprecated, use Element.getClass() instead."
+        },
+        "getMass": {
+          "description": "Returns the mass of the element (includes the included items' mass when the Element is a Container)",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getItemId": {
+          "description": "Returns the element item ID (to be used with system.getItem() function to get information about the element).",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getLocalId": {
+          "description": "Returns the unique local ID of the element",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getId": {
+          "deprecated": true,
+          "description": "Element.getId() is deprecated, use Element.getLocalId() instead."
+        },
+        "getIntegrity": {
+          "description": "Returns the element integrity between 0 and 100",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getHitPoints": {
+          "description": "Returns the element's current hit points (0 = destroyed)",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getMaxHitPoints": {
+          "description": "Returns the element's maximal hit points",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getRemainingRestorations": {
+          "description": "Returns the element's remaining number of restorations",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getMaxRestorations": {
+          "description": "Returns the element's maximal number of restorations",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getPosition": {
+          "description": "Returns the position of the Element in construct local coordinates.",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getBoundingBoxSize": {
+          "description": "Returns the bounding box dimensions of the element.",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getBoundingBoxCenter": {
+          "description": "Returns the position of the center of bounding box of the element in local construct coordinates.",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getUp": {
+          "description": "Returns the up direction vector of the Element in construct local coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getRight": {
+          "description": "Returns the right direction vector of the Element in construct local coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getForward": {
+          "description": "Returns the forward direction vector of the Element in construct local coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getWorldUp": {
+          "description": "Returns the up direction vector of the Element in world coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getWorldRight": {
+          "description": "Returns the right direction vector of the Element in world coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getWorldForward": {
+          "description": "Returns the forward direction vector of the Element in world coordinates",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "setSignalIn": {
+          "description": "Set the value of a signal in the specified IN plug of the Element.\n'type' is one of the following: ITEM, FUEL, ELECTRICITY, SIGNAL, HEAT, FLUID, CONTROL, and 'index' is a number between 0 and\nManual Switch Unit. Just check in-game for the plug names if you have a doubt.",
+          "params": [
+            {
+              "name": "plug",
+              "type": "string",
+              "description": "The plug name, in the form of IN-SIGNAL-index"
+            }
+          ]
+        },
+        "getSignalIn": {
+          "description": "Returns the value of a signal in the specified IN plug of the Element.\n'type' is one of the following: ITEM, FUEL, ELECTRICITY, SIGNAL, HEAT, FLUID, CONTROL, and 'index' is a number between 0 and\nManual Switch Unit. Just check in-game for the plug names if you have a doubt.",
+          "params": [
+            {
+              "name": "plug",
+              "type": "string",
+              "description": "The plug name, in the form of IN-SIGNAL-index"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": "value The plug signal state"
+            }
+          ]
+        },
+        "getSignalOut": {
+          "description": "Returns the value of a signal in the specified OUT plug of the Element.\n'type' is one of the following: ITEM, FUEL, ELECTRICITY, SIGNAL, HEAT, FLUID, CONTROL, and 'index' is a number between 0 and\nManual Switch Unit. Just check in-game for the plug names if you have a doubt.",
+          "params": [
+            {
+              "name": "plug",
+              "type": "string",
+              "description": "The plug name, in the form of IN-SIGNAL-index"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": "value The plug signal state"
+            }
+          ]
+        }
+      }
+    },
+    "Engine": {
+      "parent": "Element",
+      "methods": {
+        "getObstructionFactor": {
+          "description": "Returns the obstruction ratio of the engine exhaust by Elements and Voxels.",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getTags": {
+          "description": "Returns the tags of the engine",
+          "returns": [
+            {
+              "type": "string",
+              "description": ""
+            }
+          ]
+        },
+        "setTags": {
+          "description": "Set the tags of the engine",
+          "params": [
+            {
+              "name": "tags",
+              "type": "string",
+              "description": "The CSV string of the tags"
+            }
+          ]
+        },
+        "isIgnoringTags": {
+          "description": "Checks if the engine is ignoring default tags",
+          "returns": [
+            {
+              "type": "integer",
+              "description": "1 if the engine ignores default engine tags"
+            }
+          ]
+        }
+      }
+    },
+    "ForceField": {
+      "parent": "Element",
+      "methods": {
+        "deploy": {
+          "description": "Deploys the forcefield"
+        },
+        "activate": {
+          "deprecated": true,
+          "description": "ForceField.activate() is deprecated, use ForceField.deploy() instead."
+        },
+        "retract": {
+          "description": "Retracts the forcefield"
+        },
+        "deactivate": {
+          "deprecated": true,
+          "description": "ForceField.deactivate() is deprecated, use ForceField.retract() instead."
+        },
+        "isDeployed": {
+          "description": "Checks if the forcefield is deployed",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getState": {
+          "deprecated": true,
+          "description": "ForceField.getState() is deprecated, use ForceField.isDeployed() instead."
+        },
+        "toggle": {
+          "description": "Toggle the forcefield"
+        }
+      }
+    },
+    "Gyro": {
+      "parent": "Element",
+      "methods": {
+        "activate": {
+          "description": "Selects this gyro as the main gyro used for ship orientation"
+        },
+        "deactivate": {
+          "description": "Deselects this gyro as the main gyro used for ship orientation, using the Core Unit instead"
+        },
+        "toggle": {
+          "description": "Toggle the activation state of the gyro"
+        },
+        "isActive": {
+          "description": "Returns the activation state of the gyro",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getState": {
+          "deprecated": true,
+          "description": "Gyro.getState() is deprecated, use Gyro.isActive() instead."
+        },
+        "getPitch": {
+          "description": "The pitch value relative to the gyro orientation and the local gravity",
+          "returns": [
+            {
+              "type": "number",
+              "description": "pitch The pitch angle in degrees, relative to the gyro orientation and the local gravity"
+            }
+          ]
+        },
+        "getRoll": {
+          "description": "The roll value relative to the gyro orientation and the local gravity",
+          "returns": [
+            {
+              "type": "number",
+              "description": "roll The roll angle in degrees, relative to the gyro orientation and the local gravity"
+            }
+          ]
+        },
+        "localUp": {
+          "deprecated": true,
+          "description": "Gyro.localUp() is deprecated, use Gyro.getUp() instead."
+        },
+        "localForward": {
+          "description": "@deprecated Gyro.localForward() is deprecated, use Gyro.getForward() instead."
+        },
+        "localRight": {
+          "deprecated": true,
+          "description": "Gyro.localRight() is deprecated, use Gyro.getRight() instead."
+        },
+        "worldUp": {},
+        "worldForward": {
+          "deprecated": true,
+          "description": "Gyro.worldForward() is deprecated, use Gyro.getWorldForward() instead."
+        },
+        "worldRight": {
+          "description": "@deprecated Gyro.worldRight() is deprecated, use Gyro.getWorldRight() instead."
+        }
+      }
+    },
+    "HoverEngine": {
+      "parent": "SurfaceEngine"
+    },
+    "LandingGear": {
+      "parent": "Element",
+      "methods": {
+        "deploy": {
+          "description": "Deploys the landing gear"
+        },
+        "activate": {
+          "deprecated": true,
+          "description": "LandingGear.activate() is deprecated, use LandingGear.deploy() instead."
+        },
+        "retract": {
+          "description": "Retracts the landing gear"
+        },
+        "deactivate": {
+          "deprecated": true,
+          "description": "ForceField.deactivate() is deprecated, use ForceField.retract() instead."
+        },
+        "isDeployed": {
+          "description": "Checks if the landing gear is deployed",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getState": {
+          "deprecated": true,
+          "description": "ForceField.getState() is deprecated, use ForceField.isDeployed() instead."
+        },
+        "toggle": {
+          "description": "Toggle the landing gear"
+        }
+      }
+    },
+    "LaserEmitter": {
+      "parent": "Element",
+      "methods": {
+        "activate": {
+          "description": "Activates the laser emitter"
+        },
+        "deactivate": {
+          "description": "Deactivates the laser emitter"
+        },
+        "toggle": {
+          "description": "Toggle the laser emitter"
+        },
+        "isActive": {
+          "description": "Checks if the laser emitter is active",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getState": {
+          "deprecated": true,
+          "description": "LaserEmitter.getState() is deprecated, use LaserEmitter.isActive() instead."
+        }
+      }
+    },
+    "Light": {
+      "parent": "Element",
+      "methods": {
+        "activate": {
+          "description": "Switches the light on"
+        },
+        "deactivate": {
+          "description": "Switches the light off"
+        },
+        "isActive": {
+          "description": "Checks if the light is on",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getState": {
+          "deprecated": true,
+          "description": "Light.getState() is deprecated, use Light.isActive() instead."
+        },
+        "toggle": {
+          "description": "Toggle the state of the light"
+        },
+        "setColor": {
+          "description": "Set the light color in RGB. Lights can use HDR color values above 1.0 to glow.",
+          "params": [
+            {
+              "name": "r",
+              "type": "number",
+              "description": "The red component, between 0.0 and 1.0, up to 5.0 for HDR colors."
+            },
+            {
+              "name": "b",
+              "type": "number",
+              "description": "The blue component, between 0.0 and 1.0, up to 5.0 for HDR colors."
+            }
+          ]
+        },
+        "setRGBColor": {
+          "deprecated": true,
+          "description": "Light.setRGBColor(r,g,b) is deprecated, use Light.setColor(r,g,b) instead."
+        },
+        "getColor": {
+          "description": "Returns the light color in RGB",
+          "returns": [
+            {
+              "type": "table",
+              "description": "color  A vec3 for the red, blue and green components of the light, with values between 0.0 and 1.0, up to 5.0."
+            }
+          ]
+        },
+        "getRGBColor": {
+          "deprecated": true,
+          "description": "Light.getRGBColor() is deprecated, use Light.getColor() instead."
+        },
+        "setBlinkingState": {
+          "description": "Returns the blinking state of the light",
+          "params": [
+            {
+              "name": "state",
+              "type": "boolean",
+              "description": "True to enable light blinking"
+            }
+          ]
+        },
+        "isBlinking": {
+          "description": "Checks if the light blinking is enabled",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getOnBlinkingDuration": {
+          "description": "Returns the light 'on' blinking duration",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "setOnBlinkingDuration": {
+          "description": "Set the light 'on' blinking duration",
+          "params": [
+            {
+              "name": "time",
+              "type": "number",
+              "description": "The duration of the 'on' blinking in seconds"
+            }
+          ]
+        },
+        "getOffBlinkingDuration": {
+          "description": "Returns the light 'off' blinking duration",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "setOffBlinkingDuration": {
+          "description": "Set the light 'off' blinking duration",
+          "params": [
+            {
+              "name": "time",
+              "type": "number",
+              "description": "The duration of the 'off' blinking in seconds"
+            }
+          ]
+        },
+        "getBlinkingTimeShift": {
+          "description": "Returns the light blinking time shift",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "setBlinkingTimeShift": {
+          "description": "Set the light blinking time shift",
+          "params": [
+            {
+              "name": "shift",
+              "type": "number",
+              "description": "The time shift of the blinking"
+            }
+          ]
+        }
+      }
+    },
+    "ManualButton": {
+      "parent": "Element",
+      "events": {
+        "onPressed": {
+          "description": "Emitted when the button is pressed"
+        },
+        "onReleased": {
+          "description": "Emitted when the button is released"
+        }
+      },
+      "methods": {
+        "isDown": {
+          "description": "Checks if the manual button is down",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getState": {
+          "deprecated": true,
+          "description": "ManualButton.getState() is deprecated, use ManualButton.isDown() instead."
+        }
+      }
+    },
+    "MiningUnit": {
+      "parent": "Element",
+      "methods": {
+        "getState": {
+          "description": "Returns the current state of the mining unit",
+          "returns": [
+            {
+              "type": "integer",
+              "description": "state The status of the mining unit can be (Stopped = 1, Running = 2, Jammed output full = 3, Jammed no output container = 4)"
+            }
+          ]
+        },
+        "getStatus": {
+          "deprecated": true,
+          "description": "MiningUnit.getStatus() is deprecated, use MiningUnit.getState() instead."
+        },
+        "getRemainingTime": {
+          "description": "Returns the remaining time of the current batch extraction process.",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getActiveOre": {
+          "description": "Returns the item ID of the currently selected ore.",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getOrePools": {
+          "description": "Returns the list of available ore pools",
+          "returns": [
+            {
+              "type": "table",
+              "description": "pool A list of tables composed with {[int] oreId, [float] available, [float] maximum);"
+            }
+          ]
+        },
+        "getBaseRate": {
+          "description": "Returns the base production rate of the mining unit.",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getEfficiency": {
+          "description": "Returns the efficiency rate of the mining unit.",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getCalibrationRate": {
+          "description": "Returns the calibration rate of the mining unit.",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getOptimalRate": {
+          "description": "Returns the optimal calibration rate of the mining unit.",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getProductionRate": {
+          "description": "Returns the current production rate of the mining unit.",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getAdjacencyBonus": {
+          "description": "Returns the territory's adjacency bonus to the territory of the mining unit. Note: This value is updated only when a new batch is started.",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getLastExtractionPosition": {
+          "description": "Returns the position of the last calibration excavation, in world coordinates.",
+          "returns": [
+            {
+              "type": "table",
+              "description": ""
+            }
+          ]
+        },
+        "getLastExtractingPlayerId": {
+          "description": "Returns the ID of the last player who calibrated the mining unit.",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getLastExtractionTime": {
+          "description": "Returns the time in seconds since the last calibration of the mining unit.",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getLastExtractedOre": {
+          "description": "Returns the item ID of the ore extracted during the last calibration excavation.",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getLastExtractedVolume": {
+          "description": "Returns the volume of ore extracted during the last calibration excavation.",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        }
+      },
+      "events": {
+        "onCalibrated": {
+          "description": "Emitted when the mining unit is calibrated.",
+          "params": [
+            {
+              "name": "oreId",
+              "type": "integer",
+              "description": "The item ID of the ore extracted during the calibration process"
+            },
+            {
+              "name": "rate",
+              "type": "number",
+              "description": "The new calibration rate after calibration process"
+            }
+          ]
+        },
+        "onStarted": {
+          "description": "Emitted when the mining unit started a new extraction process.",
+          "params": [
+            {
+              "name": "oreId",
+              "type": "number",
+              "description": "The item ID of the ore mined during the extraction process"
+            }
+          ]
+        },
+        "onCompleted": {
+          "description": "Emitted when the mining unit complete a batch.",
+          "params": [
+            {
+              "name": "oreId",
+              "type": "number",
+              "description": "The item ID of the ore mined during the extraction process"
+            }
+          ]
+        },
+        "onStatusChanged": {
+          "description": "Emitted when the mining unit status is changed.",
+          "params": [
+            {
+              "name": "status",
+              "type": "integer",
+              "description": "The status of the mining unit can be (Stopped = 1, Running = 2, Jammed output full = 3, Jammed no output container = 4)"
+            }
+          ]
+        },
+        "onStopped": {
+          "description": "Emitted when the mining unit stopped the extraction process."
+        }
+      }
+    },
+    "PlasmaExtractor": {
+      "parent": "Element",
+      "methods": {
+        "getStatus": {
+          "description": "Returns the current status of the plasma extractor",
+          "returns": [
+            {
+              "type": "integer",
+              "description": "status The status of the plasma extractor can be (Stopped = 1, Running = 2, Jammed output full = 3, Jammed no output container = 4)"
+            }
+          ]
+        },
+        "getRemainingTime": {
+          "description": "Returns the remaining time of the current batch extraction process.",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getPlasmaPools": {
+          "description": "Returns the list of available plasma pools",
+          "returns": [
+            {
+              "type": "table",
+              "description": "pool A list of tables composed with {[int] oreId, [float] available, [float] maximum);"
+            }
+          ]
+        }
+      },
+      "events": {
+        "onStarted": {
+          "description": "Emitted when the plasma extractor started a new extraction process"
+        },
+        "onCompleted": {
+          "description": "Emitted when the plasma extractor complete a batch"
+        },
+        "onStatusChanged": {
+          "description": "Emitted when the plasma extractor status is changed",
+          "params": [
+            {
+              "name": "status",
+              "type": "integer",
+              "description": "The status of the plasma extractor can be (Stopped = 1, Running = 2, Jammed output full = 3, Jammed no output container = 4)"
+            }
+          ]
+        },
+        "onStopped": {
+          "description": "Emitted when the plasma extractor stopped the extraction process"
+        }
+      }
+    },
+    "PressureTile": {
+      "parent": "Element",
+      "events": {
+        "onPressed": {
+          "description": "Emitted when the pressure tile is pressed"
+        },
+        "onReleased": {
+          "description": "Emitter when the pressure tile is released"
+        }
+      },
+      "methods": {
+        "isDown": {
+          "description": "Checks if the pressure tile is down",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getState": {
+          "deprecated": true,
+          "description": "PressureTile.getState() is deprecated, use PressureTile.isDown() instead."
+        }
+      }
+    },
+    "Receiver": {
+      "parent": "Element",
+      "events": {
+        "onReceived": {
+          "description": "Emitted when a message is received on any channel defined on the element",
+          "params": [
+            {
+              "name": "channel",
+              "type": "string",
+              "description": "The channel; can be used as a filter"
+            }
+          ]
+        }
+      },
+      "methods": {
+        "getRange": {
+          "description": "Returns the receiver range",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "hasChannel": {
+          "description": "Checks if the given channel exists in the receiver channels list",
+          "params": [
+            {
+              "name": "channel",
+              "type": "string",
+              "description": "The channels list as Lua table"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "setChannelList": {
+          "description": "Set the channels list",
+          "params": [
+            {
+              "name": "channels",
+              "type": "table",
+              "description": "The channels list as Lua table"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": "1 if the channels list has been successfully set"
+            }
+          ]
+        },
+        "setChannels": {
+          "deprecated": true,
+          "description": "Receiver.setChannels(channels) is deprecated, use Receiver.setChannelList(channels) instead."
+        },
+        "getChannelList": {
+          "description": "Returns the channels list",
+          "returns": [
+            {
+              "type": "table",
+              "description": "channels The channels list as Lua table"
+            }
+          ]
+        },
+        "getChannels": {
+          "deprecated": true,
+          "description": "Receiver.getChannels() is deprecated, use Receiver.getChannelList() instead."
+        }
+      }
+    },
+    "RocketEngine": {
+      "parent": "FueledEngine",
+      "methods": {
+        "getDistance": {
+          "deprecated": true,
+          "description": "RocketEngine.getDistance() is deprecated."
+        }
+      }
+    },
+    "SpaceBrake": {
+      "parent": "BrakeEngine"
+    },
+    "SpaceMiningUnit": {
+      "parent": "Element",
+      "methods": {
+        "getState": {
+          "description": "Returns the current state of the space mining unit",
+          "returns": [
+            {
+              "type": "integer",
+              "description": "state The status of the space mining unit can be (Stopped = 1, Running = 2, Jammed output full = 3, Jammed no output container = 4)"
+            }
+          ]
+        },
+        "getStatus": {
+          "deprecated": true,
+          "description": "MiningUnit.getStatus() is deprecated, use MiningUnit.getState() instead."
+        },
+        "getRemainingTime": {
+          "description": "Returns the remaining time of the current batch extraction process.",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getActiveOre": {
+          "description": "Returns the item ID of the currently selected ore.",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getOrePools": {
+          "description": "Returns the list of available ore pools",
+          "returns": [
+            {
+              "type": "table",
+              "description": "pool A list of tables composed with {[int] oreId, [float] available, [float] maximum);"
+            }
+          ]
+        },
+        "getBaseRate": {
+          "description": "Returns the base production rate of the space mining unit.",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getEfficiency": {
+          "description": "Returns the efficiency rate of the space mining unit.",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getCalibrationRate": {
+          "description": "Returns the calibration rate of the space mining unit.",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getOptimalRate": {
+          "description": "Returns the optimal calibration rate of the space mining unit.",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getProductionRate": {
+          "description": "Returns the current production rate of the space mining unit.",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        }
+      },
+      "events": {
+        "onStarted": {
+          "description": "Emitted when the space mining unit started a new extraction process.",
+          "params": [
+            {
+              "name": "oreId",
+              "type": "number",
+              "description": "The item ID of the ore mined during the extraction process"
+            }
+          ]
+        },
+        "onCompleted": {
+          "description": "Emitted when the space mining unit complete a batch.",
+          "params": [
+            {
+              "name": "oreId",
+              "type": "number",
+              "description": "The item ID of the ore mined during the extraction process"
+            }
+          ]
+        },
+        "onStatusChanged": {
+          "description": "Emitted when the space mining unit status is changed.",
+          "params": [
+            {
+              "name": "status",
+              "type": "integer",
+              "description": "The status of the space mining unit can be"
+            }
+          ]
+        },
+        "onStopped": {
+          "description": "Emitted when the space mining unit stopped the extraction process."
+        }
+      }
+    },
+    "System": {
+      "events": {
+        "onActionStart": {
+          "description": "Emitted when an action starts",
+          "params": [
+            {
+              "name": "action",
+              "type": "string",
+              "description": "The action name, represented as a string taken among the set of predefined Lua-available actions (you can check the drop down list to see what is available)"
+            }
+          ]
+        },
+        "onActionStop": {
+          "description": "Emitted when an action stops",
+          "params": [
+            {
+              "name": "action",
+              "type": "string",
+              "description": "The action name, represented as a string taken among the set of predefined Lua-available actions (you can check the drop down list to see what is available)"
+            }
+          ]
+        },
+        "onActionLoop": {
+          "description": "Emitted at each update as long as the action is maintained",
+          "params": [
+            {
+              "name": "action",
+              "type": "string",
+              "description": "The action name, represented as a string taken among the set of predefined Lua-available actions (you can check the drop down list to see what is available)"
+            }
+          ]
+        },
+        "onUpdate": {
+          "description": "Game update event. This is equivalent to a timer set at 0 seconds, as updates will go as fast as the FPS can go"
+        },
+        "onFlush": {
+          "description": "Physics update. Do not use to put anything else by a call to updateICC on your Control Unit, as many functions are"
+        },
+        "onInputText": {
+          "description": "A new message has been entered in the Lua tab of the chat, acting like a command line interface",
+          "params": [
+            {
+              "name": "text",
+              "type": "string",
+              "description": "The message entered"
+            }
+          ]
+        },
+        "onCameraChanged": {
+          "description": "Emitted when the player changes the camera mode.",
+          "params": [
+            {
+              "name": "mode",
+              "type": "integer",
+              "description": "The camera mode, represented by an integer (First Person View = 1, Look Around Construct View = 2, Follow Construct View = 3)"
+            }
+          ]
+        }
+      },
+      "methods": {
+        "getActionKeyName": {
+          "description": "Return the currently key bound to the given action. Useful to display tips.",
+          "params": [
+            {
+              "name": "actionName",
+              "type": "string",
+              "description": "The action name, represented as a string taken among the set of predefined Lua-available actions (you can check the drop down list to see what is available)"
+            }
+          ],
+          "returns": [
+            {
+              "type": "string",
+              "description": "value The key associated to the given action name"
+            }
+          ]
+        },
+        "showScreen": {
+          "description": "Control the display of the Control Unit custom screen, where you can define customized display information in HTML.",
+          "params": [
+            {
+              "name": "bool",
+              "type": "boolean",
+              "description": "True to show the screen, false to hide the screen"
+            }
+          ]
+        },
+        "setScreen": {
+          "description": "Set the content of the Control Unit custom screen with some HTML code.",
+          "params": [
+            {
+              "name": "content",
+              "type": "string",
+              "description": "The HTML content you want to display on the screen widget. You can also use SVG here to make drawings."
+            }
+          ]
+        },
+        "createWidgetPanel": {
+          "description": "Create an empty panel.",
+          "params": [
+            {
+              "name": "label",
+              "type": "string",
+              "description": "The title of the panel"
+            }
+          ],
+          "returns": [
+            {
+              "type": "string",
+              "description": "value The panel ID, or \"\" on failure"
+            }
+          ]
+        },
+        "destroyWidgetPanel": {
+          "description": "Destroy the panel.",
+          "params": [
+            {
+              "name": "panelId",
+              "type": "string",
+              "description": "The panel ID"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": "value 1 on success, 0 on failure."
+            }
+          ]
+        },
+        "createWidget": {
+          "description": "Create an empty widget and add it to a panel.\n@param type string Widget type, determining how it will display data attached to ID",
+          "params": [
+            {
+              "name": "panelId",
+              "type": "string",
+              "description": "The panel ID"
+            }
+          ],
+          "returns": [
+            {
+              "type": "string",
+              "description": "value The widget ID, or \"\" on failure."
+            }
+          ]
+        },
+        "destroyWidget": {
+          "description": "Destroy the widget.",
+          "params": [
+            {
+              "name": "widgetId",
+              "type": "string",
+              "description": "The widget ID"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": "value 1 on success, 0 on failure."
+            }
+          ]
+        },
+        "createData": {
+          "description": "Create data.",
+          "params": [
+            {
+              "name": "dataJson",
+              "type": "string",
+              "description": "The data fields as JSON"
+            }
+          ],
+          "returns": [
+            {
+              "type": "string",
+              "description": "value The data ID, or \"\" on failure."
+            }
+          ]
+        },
+        "destroyData": {
+          "description": "Destroy the data.",
+          "params": [
+            {
+              "name": "dataId",
+              "type": "string",
+              "description": "The data ID"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": "value 1 on success, 0 on failure."
+            }
+          ]
+        },
+        "updateData": {
+          "description": "Update JSON associated to data.\n@param dataJson string The data fields as JSON",
+          "params": [
+            {
+              "name": "dataId",
+              "type": "string",
+              "description": "The data ID"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": "value 1 on success, 0 on failure."
+            }
+          ]
+        },
+        "addDataToWidget": {
+          "description": "Add data to widget.\n@param widgetId string The widget ID",
+          "params": [
+            {
+              "name": "dataId",
+              "type": "string",
+              "description": "The data ID"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": "value 1 on success, 0 on failure."
+            }
+          ]
+        },
+        "removeDataFromWidget": {
+          "description": "Remove data from widget.\n@param widgetId string The widget ID",
+          "params": [
+            {
+              "name": "dataId",
+              "type": "string",
+              "description": "The data ID"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": "value 1 on success, 0 on failure."
+            }
+          ]
+        },
+        "getMouseWheel": {
+          "description": "Return the current value of the mouse wheel",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value The current value of the mouse wheel"
+            }
+          ]
+        },
+        "getMouseDeltaX": {
+          "description": "Return the current value of the mouse delta X",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value The current value of the mouse delta X"
+            }
+          ]
+        },
+        "getMouseDeltaY": {
+          "description": "Return the current value of the mouse delta Y",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value The current value of the mouse delta Y"
+            }
+          ]
+        },
+        "getMousePosX": {
+          "description": "Return the current value of the mouse pos X",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value The current value of the mouse pos X"
+            }
+          ]
+        },
+        "getMousePosY": {
+          "description": "Return the current value of the mouse pos Y",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value The current value of the mouse pos Y"
+            }
+          ]
+        },
+        "getMouseSensitivity": {
+          "description": "Return the value of mouse sensitivity game setting",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value Sensitivity setting value"
+            }
+          ]
+        },
+        "getScreenHeight": {
+          "description": "Return the current value of the screen height",
+          "returns": [
+            {
+              "type": "integer",
+              "description": "value The current value of the screen height"
+            }
+          ]
+        },
+        "getScreenWidth": {
+          "description": "Return the current value of the screen width",
+          "returns": [
+            {
+              "type": "integer",
+              "description": "value The current value of the screen width"
+            }
+          ]
+        },
+        "getCameraHorizontalFov": {
+          "description": "Return the current value of the player's horizontal field of view",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value The current value of the player's horizontal field of view"
+            }
+          ]
+        },
+        "getFov": {
+          "deprecated": true,
+          "description": "System.getFov() is deprecated, use System.getCameraHorizontalFov()."
+        },
+        "getCameraVerticalFov": {
+          "description": "Return the current value of the player's vertical field of view",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value The current value of the player's vertical field of view"
+            }
+          ]
+        },
+        "getCameraMode": {
+          "description": "Returns the active camera mode.",
+          "returns": [
+            {
+              "type": "integer",
+              "description": "mode 1: First Person View, 2: Look Around Construct View, 3: Follow Construct View"
+            }
+          ]
+        },
+        "isFirstPerson": {
+          "description": "Checks if the active camera is in first person view.",
+          "returns": [
+            {
+              "type": "integer",
+              "description": "value 1 if the camera is in first person view."
+            }
+          ]
+        },
+        "getCameraPos": {
+          "description": "Returns the position of the camera, in construct local coordinates.",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Camera position in construct local coordinates."
+            }
+          ]
+        },
+        "getCameraWorldPos": {
+          "description": "Returns the position of the camera, in world coordinates.",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Camera position in world coordinates."
+            }
+          ]
+        },
+        "getCameraWorldForward": {
+          "description": "Returns the forward direction vector of the active camera, in world coordinates.",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Camera forward direction vector in world coordinates."
+            }
+          ]
+        },
+        "getCameraWorldRight": {
+          "description": "Returns the right direction vector of the active camera, in world coordinates.",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Camera right direction vector in world coordinates."
+            }
+          ]
+        },
+        "getCameraWorldUp": {
+          "description": "Returns the up direction vector of the active camera, in world coordinates.",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Camera up direction vector in world coordinates."
+            }
+          ]
+        },
+        "getCameraForward": {
+          "description": "Returns the forward direction vector of the active camera, in construct local coordinates.",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Camera forward direction vector in construct local coordinates."
+            }
+          ]
+        },
+        "getCameraRight": {
+          "description": "Returns the right direction vector of the active camera, in construct local coordinates.",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Camera right direction vector in construct local coordinates."
+            }
+          ]
+        },
+        "getCameraUp": {
+          "description": "Returns the up direction vector of the active camera, in construct local coordinates.",
+          "returns": [
+            {
+              "type": "table",
+              "description": "value Camera up direction vector in construct local coordinates."
+            }
+          ]
+        },
+        "getThrottleInputFromMouseWheel": {
+          "description": "Return the current value of the mouse wheel (for the throttle speedUp/speedDown action)",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value The current input"
+            }
+          ]
+        },
+        "getControlDeviceForwardInput": {
+          "description": "Return the mouse input for the ship control action (forward/backward)",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value The current input"
+            }
+          ]
+        },
+        "getControlDeviceYawInput": {
+          "description": "Return the mouse input for the ship control action  (yaw right/left)",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value The current input"
+            }
+          ]
+        },
+        "getControlDeviceLeftRightInput": {
+          "description": "Return the mouse input for the ship control action  (right/left)",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value The current value of the mouse delta Y"
+            }
+          ]
+        },
+        "lockView": {
+          "description": "Lock or unlock the mouse free look.",
+          "params": [
+            {
+              "name": "state",
+              "type": "boolean",
+              "description": "true to lock and false to unlock"
+            }
+          ]
+        },
+        "isViewLocked": {
+          "description": "Return the lock state of the mouse free look",
+          "returns": [
+            {
+              "type": "integer",
+              "description": "value 1 when locked and 0 when unlocked"
+            }
+          ]
+        },
+        "freeze": {
+          "deprecated": true,
+          "description": "System.freeze() is deprecated, use Player.freeze()."
+        },
+        "isFrozen": {
+          "description": "@deprecated System.isFrozen() is deprecated, use Player.isFrozen()."
+        },
+        "getArkTime": {
+          "description": "Return the current time since the arrival of the Arkship on September 30th, 2017",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value Time in seconds"
+            }
+          ]
+        },
+        "getTime": {
+          "deprecated": true,
+          "description": "System.getTime() is deprecated, use System.getArkTime()."
+        },
+        "getUtcTime": {
+          "description": "Return the current time since January 1st, 1970.",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value Time in seconds"
+            }
+          ]
+        },
+        "getUtcOffset": {
+          "description": "Return the time offset between local timezone and UTC",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value Time in seconds"
+            }
+          ]
+        },
+        "getLocale": {
+          "description": "Return the locale in which the game is currently running",
+          "returns": [
+            {
+              "type": "string",
+              "description": "value The locale, currently one of \"en-US\", \"fr-FR\", or \"de-DE\""
+            }
+          ]
+        },
+        "getActionUpdateDeltaTime": {
+          "description": "Return delta time of action updates (to use in ActionLoop)",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value The delta time in seconds"
+            }
+          ]
+        },
+        "getPlayerName": {
+          "description": "Return the name of the given player, if in range of visibility or broadcasted by a transponder",
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The ID of the player"
+            }
+          ],
+          "returns": [
+            {
+              "type": "string",
+              "description": "value The name of the player"
+            }
+          ]
+        },
+        "getPlayerWorldPos": {
+          "description": "Return the world position of the given player, if in range of visibility",
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The ID of the player"
+            }
+          ],
+          "returns": [
+            {
+              "type": "table",
+              "description": "value The coordinates of the player in world coordinates"
+            }
+          ]
+        },
+        "getItem": {
+          "description": "Return the item table corresponding to the given item ID.",
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The ID of the item"
+            }
+          ],
+          "returns": [
+            {
+              "type": "table",
+              "description": "value An item table with fields: {[int] id, [string] name, [string] displayName, [string] locDisplayName, [string] displayNameWithSize, [string] locDisplayNameWithSize, [string] description, [string] locDescription, [string] type, [number] unitMass, [number] unitVolume, [integer] tier, [string] scale, [string] iconPath, [table] schematics, [table] products}"
+            }
+          ]
+        },
+        "getRecipes": {
+          "description": "Returns a list of recipes producing the given item from its id.",
+          "params": [
+            {
+              "name": "itemId",
+              "type": "integer",
+              "description": "The ID of the item"
+            }
+          ],
+          "returns": [
+            {
+              "type": "table",
+              "description": "value A list of recipe table with field: {[int] id, [int] tier,[double] time, [bool] nanocraftable, [table] products:{{[int] id, [double] quantity},...}, [table] ingredients:{{[int] id, [double] quantity},...}}"
+            }
+          ]
+        },
+        "getSchematic": {
+          "deprecated": true,
+          "description": "System.getSchematic(id) is deprecated, use System.getRecipes(itemId).tag."
+        },
+        "getOrganization": {
+          "description": "Returns the corresping organization to the given organization id, if known, e.g. broadcasted by a transponder",
+          "params": [
+            {
+              "name": "id",
+              "type": "integer",
+              "description": "The ID of the organization"
+            }
+          ],
+          "returns": [
+            {
+              "type": "table",
+              "description": "value A table containing information about the given organization {[string] name, [string] tag}"
+            }
+          ]
+        },
+        "getOrganizationName": {
+          "deprecated": true,
+          "description": "System.getOrganizationName() is deprecated, use System.getOrganization(id).name ."
+        },
+        "getOrganizationTag": {},
+        "getWaypointFromPlayerPos": {
+          "description": "Return the player's world position as a waypoint string, starting with '::pos' (only in explicit runs)",
+          "returns": [
+            {
+              "type": "string",
+              "description": "value The waypoint as a string"
+            }
+          ]
+        },
+        "setWaypoint": {
+          "description": "Set a waypoint at the destination described by the waypoint string, of the form '::pos{...}' (only in explicit runs)",
+          "params": [
+            {
+              "name": "waypointStr",
+              "type": "string",
+              "description": "The waypoint as a string"
+            }
+          ]
+        },
+        "clearWaypoint": {
+          "description": "Clear the active destination waypoint. (only in explicit runs)'",
+          "params": [
+            {
+              "name": "notify",
+              "type": "boolean",
+              "description": "(Optional) True to display a notification about the waypoint's clearing"
+            }
+          ]
+        },
+        "showHelper": {
+          "description": "Set the visibility of the helper top menu.",
+          "params": [
+            {
+              "name": "show",
+              "type": "boolean",
+              "description": "True to show the top helper menu, false to hide the top helper menu"
+            }
+          ]
+        },
+        "playSound": {
+          "description": "Play a sound file from your audio folder (located in \"My documents/NQ/DualUniverse/audio\"). Only one sound can be played at a time.",
+          "params": [
+            {
+              "name": "filePath",
+              "type": "string",
+              "description": "Relative path to audio folder (.mp3, .wav)"
+            }
+          ]
+        },
+        "isPlayingSound": {
+          "returns": [
+            {
+              "type": "integer",
+              "description": "value 1 if a sound is playing"
+            }
+          ]
+        },
+        "stopSound": {
+          "description": "Stop the current playing sound"
+        },
+        "print": {
+          "description": "Print the given string in the Lua chat channel",
+          "params": [
+            {
+              "name": "msg",
+              "type": "string",
+              "description": ""
+            }
+          ]
+        }
+      }
+    },
+    "Transponder": {
+      "parent": "Engine",
+      "methods": {
+        "activate": {
+          "description": "Activate the transponder"
+        },
+        "deactivate": {
+          "description": "Deactivate the transponder"
+        },
+        "toggle": {
+          "description": "Toggle the state of the transponder"
+        },
+        "isActive": {
+          "description": "Checks if the transponder is active",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getState": {
+          "deprecated": true,
+          "description": "Transponder.getState() is deprecated, use Transponder.isActive()."
+        },
+        "setTags": {
+          "description": "Set the tags list with up to 8 entries. Returns 1 if the application was successful, 0 if the tag",
+          "params": [
+            {
+              "name": "tags",
+              "type": "table",
+              "description": "List of up to 8 transponder tag strings"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getTags": {
+          "description": "Returns the tag list",
+          "returns": [
+            {
+              "type": "table",
+              "description": "tags List of up to 8 transponder tag strings"
+            }
+          ]
+        }
+      },
+      "events": {
+        "onToggled": {
+          "description": "Emitted when the transponder is started or stopped",
+          "params": [
+            {
+              "name": "active",
+              "type": "integer",
+              "description": "1 if the element was activated, 0 otherwise"
+            }
+          ]
+        }
+      }
+    },
+    "VerticalBooster": {
+      "parent": "SurfaceEngine"
+    },
+    "Weapon": {
+      "parent": "Element",
+      "events": {
+        "onReload": {
+          "description": "Emitted when the weapon start reloading",
+          "params": [
+            {
+              "name": "ammoId",
+              "type": "integer",
+              "description": "The item id of the ammo"
+            }
+          ]
+        },
+        "onReloaded": {
+          "description": "Emitted when the weapon has reloaded",
+          "params": [
+            {
+              "name": "ammoId",
+              "type": "integer",
+              "description": "The item id of the ammo"
+            }
+          ]
+        },
+        "onMissed": {
+          "description": "Emitted when the weapon has missed its target",
+          "params": [
+            {
+              "name": "targetId",
+              "type": "integer",
+              "description": "The construct id of the target"
+            }
+          ]
+        },
+        "onDestroyed": {
+          "description": "Emitted when the weapon target has been destroyed",
+          "params": [
+            {
+              "name": "targetId",
+              "type": "integer",
+              "description": "The construct id of the target"
+            }
+          ]
+        },
+        "onElementDestroyed": {
+          "description": "Emitted when an element on the weapon target has been destroyed",
+          "params": [
+            {
+              "name": "targetId",
+              "type": "integer",
+              "description": "The construct id of the target"
+            }
+          ]
+        },
+        "onHit": {
+          "description": "Emitted when the weapon has hit",
+          "params": [
+            {
+              "name": "targetId",
+              "type": "integer",
+              "description": "The construct id of the target"
+            }
+          ]
+        }
+      },
+      "methods": {
+        "getAmmo": {
+          "description": "Returns the item id of the currently equipped ammo",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getAmmoCount": {
+          "description": "Returns the current amount of remaining ammunition",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getMaxAmmo": {
+          "description": "Returns the maximum amount of ammunition the weapon can carry",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "isOutOfAmmo": {
+          "description": "Checks if the weapon is out of ammo",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getOperationalState": {
+          "description": "Returns 1 if the weapon is not broken and compatible with the construct size",
+          "returns": [
+            {
+              "type": "integer",
+              "description": "state 1 if the weapon is operational, otherwise 0 = broken, -1 = incompatible size"
+            }
+          ]
+        },
+        "isOperational": {
+          "deprecated": true,
+          "description": "Weapon.isOperational() is deprecated, use Weapon.getOperationalState() instead."
+        },
+        "getStatus": {
+          "description": "Returns the current weapon status",
+          "returns": [
+            {
+              "type": "integer",
+              "description": "status The current status of the weapon (Idle = 1, Firing = 2, Reloading = 3, Unloading = 4)"
+            }
+          ]
+        },
+        "getContainerId": {
+          "description": "Returns the local id of the container linked to the weapon",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getHitProbability": {
+          "description": "Returns the current hit probability of the weapon for the current target",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getBaseDamage": {
+          "description": "Returns the base weapon damage",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getOptimalAimingCone": {
+          "description": "Returns the optimal aim cone",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getOptimalDistance": {
+          "description": "Returns the optimal distance to target",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getMaxDistance": {
+          "description": "Returns the maximum distance to target",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getOptimalTracking": {
+          "description": "Returns the optimal tracking rate",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getMagazineVolume": {
+          "description": "Returns the magazine volume",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getCycleTime": {
+          "description": "Returns the weapon cycle time",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getReloadTime": {
+          "description": "Returns the weapon reload time",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getUnloadTime": {
+          "description": "Returns the weapon unload time",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getTargetId": {
+          "description": "Returns the id of the current target construct of the weapon",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        }
+      }
+    }
+  },
+  "globals": {
+    "library": {
+      "type": "Library"
+    },
+    "system": {
+      "type": "System"
+    },
+    "unit": {
+      "type": "ControlUnit"
+    },
+    "player": {
+      "type": "Player"
+    },
+    "construct": {
+      "type": "Construct"
+    },
+    "DULibrary": {
+      "type": "Library"
+    },
+    "DUSystem": {
+      "type": "System"
+    },
+    "DUPlayer": {
+      "type": "Player"
+    },
+    "DUConstruct": {
+      "type": "Construct"
+    }
+  }
+}
