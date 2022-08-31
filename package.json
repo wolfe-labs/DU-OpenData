@@ -4,7 +4,8 @@
   "description": "JSON-based data from Dual Universe",
   "main": "index.js",
   "scripts": {
-    "build-lua-codex": "node bin/BuildLuaCodex.js"
+    "build-lua-codex": "node bin/BuildLuaCodex.js",
+    "build-item-list": "node bin/BuildItemList.js"
   },
   "repository": {
     "type": "git",
