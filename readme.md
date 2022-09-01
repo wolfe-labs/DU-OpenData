@@ -9,3 +9,6 @@ A collection of datasets about Dual Universe in a developer-friendly way.
 
 **Item Dump** [[view]](dist/Items.json):
 [Davemane42's Item Dump](https://docs.google.com/spreadsheets/d/1fGJyguTIV_jDLFdKkEyMr975VEyp2ICtp_6fZTDRSn4/edit)
+
+**Recipe Dump** [[view]](dist/Recipes.json)
+[Jericho's du-lua.dev](https://du-lua.dev/#/)

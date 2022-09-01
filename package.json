@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build-lua-codex": "node bin/BuildLuaCodex.js",
-    "build-item-list": "node bin/BuildItemList.js"
+    "build-item-list": "node bin/BuildItemList.js",
+    "build-recipe-list": "node bin/ConvertLuaToJson.js src/Recipes.lua dist/Recipes.json"
   },
   "repository": {
     "type": "git",

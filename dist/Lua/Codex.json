@@ -1539,7 +1539,7 @@
             {
               "name": "mode",
               "type": "integer",
-              "description": "The docking mode (Manual = 0, Automatic = 1, Semi-automatic = 2)"
+              "description": "The docking mode (Manual = 1, Automatic = 2, Semi-automatic = 3)"
             }
           ],
           "returns": [
@@ -1554,7 +1554,7 @@
           "returns": [
             {
               "type": "integer",
-              "description": "mode The docking mode (Manual = 0, Automatic = 1, Semi-automatic = 2)"
+              "description": "mode The docking mode (Manual = 1, Automatic = 2, Semi-automatic = 3)"
             }
           ]
         },
@@ -5922,6 +5922,261 @@
         },
         "clear": {
           "description": "Clear the screen"
+        }
+      }
+    },
+    "ShieldGenerator": {
+      "parent": "Element",
+      "events": {
+        "onToggled": {
+          "description": "Emitted when we started or stopped the shield generator",
+          "params": [
+            {
+              "name": "active",
+              "type": "integer",
+              "description": "1 if the element was activated, 0 otherwise"
+            }
+          ]
+        },
+        "toggled": {},
+        "onAbsorbed": {
+          "description": "Emitted when the shield absorbed incoming damage",
+          "params": [
+            {
+              "name": "hitpoints",
+              "type": "number",
+              "description": "Damage the shield absorbed"
+            },
+            {
+              "name": "rawHitpoints",
+              "type": "number",
+              "description": "Total damage without taking resistances into account"
+            }
+          ]
+        },
+        "absorbed": {},
+        "onVenting": {
+          "description": "Emitted when venting started, stopped or restored some hitpoints",
+          "params": [
+            {
+              "name": "active",
+              "type": "integer",
+              "description": "1 when venting is active, 0 otherwise"
+            },
+            {
+              "name": "restoredHitpoints",
+              "type": "number",
+              "description": "Hitpoints restored since the last venting step"
+            }
+          ]
+        },
+        "venting": {},
+        "onDown": {
+          "description": "Emitted when the shield hit points reached 0 due to damage"
+        },
+        "down": {},
+        "onRestored": {
+          "description": "Emitted when the shield hit points were fully restored"
+        },
+        "restored": {}
+      },
+      "methods": {
+        "activate": {
+          "description": "Activate the shield"
+        },
+        "deactivate": {
+          "description": "Deactivate the shield"
+        },
+        "toggle": {
+          "description": "Toggle the state of the shield"
+        },
+        "isActive": {
+          "description": "Returns the activation state of the shield",
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getState": {
+          "deprecated": true,
+          "description": "ShieldGenerator.getState() is deprecated, use ShieldGenerator.isActive() instead."
+        },
+        "getShieldHitpoints": {
+          "description": "Returns the current hit points of the shield",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getMaxShieldHitpoints": {
+          "description": "Returns the maximal hit points of the shield",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "startVenting": {
+          "description": "Activate shield venting to restore hit points",
+          "returns": [
+            {
+              "type": "integer",
+              "description": "state 1 if venting started, 0 if an error occurred"
+            }
+          ]
+        },
+        "stopVenting": {
+          "description": "Stop shield venting",
+          "returns": [
+            {
+              "type": "integer",
+              "description": "state 1 if venting stopped, 0 if an error occurred"
+            }
+          ]
+        },
+        "isVenting": {
+          "description": "Check whether venting is in progress",
+          "returns": [
+            {
+              "type": "integer",
+              "description": "state 1 if venting is ongoing, 0 otherwise"
+            }
+          ]
+        },
+        "getVentingCooldown": {
+          "description": "Returns time after which venting is possible again",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value Remaining seconds of the venting cooldown"
+            }
+          ]
+        },
+        "getVentingMaxCooldown": {
+          "description": "Returns maximal cooldown between venting",
+          "returns": [
+            {
+              "type": "number",
+              "description": "value Maximal seconds of the venting cooldown"
+            }
+          ]
+        },
+        "getResistances": {
+          "description": "Returns distribution of resistance pool over resistance types",
+          "returns": [
+            {
+              "type": "table",
+              "description": "resistances Resistance to damage type {antimatter, electromagnetic, kinetic, thermic}"
+            }
+          ]
+        },
+        "setResistances": {
+          "description": "Distribute the resistance pool according to damage type",
+          "params": [
+            {
+              "name": "antimatter",
+              "type": "number",
+              "description": "Antimatter damage resistance"
+            },
+            {
+              "name": "electromagnetic",
+              "type": "number",
+              "description": "Electromagnetic damage resistance"
+            },
+            {
+              "name": "kinetic",
+              "type": "number",
+              "description": "Kinetic damage resistance"
+            },
+            {
+              "name": "thermic",
+              "type": "number",
+              "description": "Thermic damage resistance"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "description": ""
+            }
+          ]
+        },
+        "getResistancesCooldown": {
+          "description": "Returns time after which adjusting resistances is possible again",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getResistancesMaxCooldown": {
+          "description": "Returns maximal cooldown between adjusting resistances",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getResistancesPool": {
+          "description": "Returns total resistance pool that may be distributed",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getResistancesRemaining": {
+          "description": "Returns the remaining amount of the resistance pool that can be distributed",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getStressRatio": {
+          "description": "Returns ratio per damage type of recent weapon impacts after applying resistance",
+          "returns": [
+            {
+              "type": "table",
+              "description": "stress Stress ratio due to damage type {antimatter, electromagnetic, kinetic, thermic}"
+            }
+          ]
+        },
+        "getStressRatioRaw": {
+          "description": "Returns ratio per damage type of recent weapon impacts without resistance",
+          "returns": [
+            {
+              "type": "table",
+              "description": "stress Stress ratio due to damage type {antimatter, electromagnetic, kinetic, thermic}"
+            }
+          ]
+        },
+        "getStressHitpoints": {
+          "description": "Returns stress, that is the total hit points of recent weapon impacts after applying resistance",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
+        },
+        "getStressHitpointsRaw": {
+          "description": "Returns stress, that is the total hit points of recent weapon impacts without resistance",
+          "returns": [
+            {
+              "type": "number",
+              "description": ""
+            }
+          ]
         }
       }
     },
