@@ -15,9 +15,9 @@
           "description": "Checks if the adjustor is active",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "The adjustor state, 1 if active"
+              "description": "True when the adjustor is on, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -326,9 +326,9 @@
           "description": "Checks if the airfoil is stalled",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the airfoil is stalled"
+              "description": "True if the airfoil is stalled, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -443,9 +443,9 @@
           "description": "Returns the state of activation of the anti-gravity generator",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 when the anti-gravity generator is started, 0 otherwise"
+              "description": "True if the anti-gravity generator is started, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -561,8 +561,8 @@
           "params": [
             {
               "name": "active",
-              "type": "integer",
-              "description": "1 if the element was activated, 0 otherwise"
+              "type": "boolean",
+              "description": "True if the element was activated, false otherwise"
             }
           ]
         },
@@ -613,20 +613,15 @@
           "description": "Toggle the state of the shield",
           "isMethodStatic": true
         },
-        "isActive": {
+        "getState": {
           "description": "Returns the activation state of the shield",
           "returns": [
             {
               "type": "integer",
               "name": "value",
-              "description": "The state of the shield; 1 when the shield is active, 0 otherwise"
+              "description": "True when the shield is active, false otherwise"
             }
           ],
-          "isMethodStatic": true
-        },
-        "getState": {
-          "deprecated": true,
-          "description": "BaseShieldGenerator.getState() is deprecated, use BaseShieldGenerator.isActive() instead.",
           "isMethodStatic": true
         },
         "getShieldHitpoints": {
@@ -688,9 +683,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "success",
-              "description": "1 if resistance was distributed, 0 if an error occurred"
+              "description": "True if resistance was distributed, false if an error occurred"
             }
           ],
           "isMethodStatic": true
@@ -787,9 +782,9 @@
           "description": "Returns whether the base shield is currently in lockdown",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "The base shield lockdown state; 1 when the shield is in lockdown, 0 otherwise"
+              "description": "True if the base shield is in lockdown, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -827,9 +822,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "success",
-              "description": "1 if lockdown exit was set, 0 if an error occurred"
+              "description": "True if lockdown exit was set, false if an error occurred"
             }
           ],
           "isMethodStatic": true
@@ -851,8 +846,9 @@
           "description": "Checks if the brake is active",
           "returns": [
             {
-              "type": "integer",
-              "description": ""
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the brake is on, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -1043,12 +1039,24 @@
           ],
           "isMethodStatic": true
         },
+        "getSchematicContainerId": {
+          "description": "Returns the local id of the current active schematic container. nil if none has been declared",
+          "returns": [
+            {
+              "type": "interger",
+              "name": "the",
+              "description": "local id of the current active schematic container"
+            }
+          ],
+          "isMethodStatic": true
+        },
         "isWarping": {
           "description": "Checks if the construct is currently warping",
           "returns": [
             {
-              "type": "integer",
-              "description": ""
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the construct is currently warping, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -1068,8 +1076,9 @@
           "description": "Checks if the construct is in PvP zone",
           "returns": [
             {
-              "type": "integer",
-              "description": ""
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the construct is in PVP zone, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -1102,6 +1111,17 @@
             {
               "type": "number",
               "description": ""
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "getTotalMass": {
+          "description": "Returns the total mass of the construct (voxels, elements, avatars and docked constructs)",
+          "returns": [
+            {
+              "type": "number",
+              "name": "The",
+              "description": "total mass of the construct in kilograms"
             }
           ],
           "isMethodStatic": true
@@ -1711,8 +1731,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
-              "description": ""
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the given player is on board, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -1728,8 +1749,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
-              "description": ""
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the given player is boarded to the construct, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -1789,8 +1811,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
-              "description": ""
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the given construct is docked, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -1823,8 +1846,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
-              "description": ""
+              "type": "boolean",
+              "name": "success",
+              "description": "True if the operation is a success, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -1851,8 +1875,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
-              "description": ""
+              "type": "boolean",
+              "name": "success",
+              "description": "True if the operation is a success, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -1861,8 +1886,9 @@
           "description": "Sends a request to undock the construct. Limited to piloting controllers",
           "returns": [
             {
-              "type": "integer",
-              "description": ""
+              "type": "boolean",
+              "name": "success",
+              "description": "True if the operation is a success, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -1878,8 +1904,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
-              "description": ""
+              "type": "boolean",
+              "name": "True",
+              "description": "if the operation is a success, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -1895,8 +1922,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
-              "description": ""
+              "type": "boolean",
+              "name": "True",
+              "description": "if the operation is a success, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -1912,8 +1940,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
-              "description": ""
+              "type": "boolean",
+              "name": "True",
+              "description": "if the operation is a success, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -1976,7 +2005,7 @@
             {
               "name": "active",
               "type": "boolean",
-              "description": "1 if the timer started, false when the timer elapsed"
+              "description": "True if the timer started, false when the timer elapsed"
             }
           ]
         }
@@ -2199,9 +2228,9 @@
           "description": "Checks if the control unit is protected by DRM",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the control unit is protected by DRM"
+              "description": "True if the control unit is protected by DRM, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -2210,9 +2239,9 @@
           "description": "Check if the construct is remote controlled",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the construct is remote controlled"
+              "description": "True if the construct is remote controlled, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -2238,12 +2267,12 @@
             {
               "name": "keepForceCollinearity",
               "type": "boolean",
-              "description": "Forces the resulting acceleration vector to be collinear to the acceleration parameter"
+              "description": "True to force the resulting acceleration vector to be collinear to the acceleration parameter"
             },
             {
               "name": "keepTorqueCollinearity",
               "type": "boolean",
-              "description": "Forces the resulting angular acceleration vector to be collinear to the angular acceleration parameter"
+              "description": "True to force the resulting angular acceleration vector to be collinear to the angular acceleration parameter"
             },
             {
               "name": "priority1SubTags",
@@ -2381,9 +2410,9 @@
           "description": "Check if a mouse control scheme is selected\nThis function must be used on a piloting controller",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if a mouse control scheme is selected"
+              "description": "True if a mouse control scheme is selected, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -2392,9 +2421,9 @@
           "description": "Check if the mouse control direct scheme is selected\nThis function must be used on a piloting controller",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if a mouse control direct scheme is selected"
+              "description": "True if a direct mouse control scheme is selected, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -2403,9 +2432,9 @@
           "description": "Check if the mouse control virtual joystick scheme is selected\nThis function must be used on a piloting controller",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if a mouse control virtual joystick scheme is selected"
+              "description": "True if a mouse control virtual joystick scheme is selected, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -2483,9 +2512,9 @@
           "description": "Checks if any landing gear is deployed",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "0 or 1 1 if any landing gear is deployed"
+              "description": "True if any landing gear is deployed, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -2512,9 +2541,9 @@
           "description": "Check construct lights status",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if any Headlight is switched on"
+              "description": "True if any Headlight is on, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -2561,7 +2590,67 @@
             }
           ]
         },
-        "stressChanged": {}
+        "stressChanged": {},
+        "onElementBroken": {
+          "description": "Emitted when an Element is broken",
+          "params": [
+            {
+              "name": "localId",
+              "type": "integer",
+              "description": "The local ID of the Element"
+            },
+            {
+              "name": "restorations",
+              "type": "integer",
+              "description": "The restorations remaining for the Element"
+            }
+          ]
+        },
+        "onElementRestored": {
+          "description": "Emitted when an Element is restored",
+          "params": [
+            {
+              "name": "localId",
+              "type": "integer",
+              "description": "The local ID of the Element"
+            },
+            {
+              "name": "restorations",
+              "type": "integer",
+              "description": "The restorations remaining for the Element"
+            }
+          ]
+        },
+        "onElementDamaged": {
+          "description": "Emitted when an Element is damaged",
+          "params": [
+            {
+              "name": "localId",
+              "type": "integer",
+              "description": "The local ID of the Element"
+            },
+            {
+              "name": "hitpoints",
+              "type": "integer",
+              "description": "The amount of hitpoints taken in damage"
+            }
+          ]
+        },
+        "onElementRepaired": {
+          "description": "Emitted when an Element is repaired",
+          "params": [
+            {
+              "name": "localId",
+              "type": "integer",
+              "description": "The local ID of the Element"
+            },
+            {
+              "name": "hitpoints",
+              "type": "integer",
+              "description": "The amount of hitpoints repaired"
+            }
+          ]
+        }
       },
       "methods": {
         "getConstructId": {
@@ -2591,7 +2680,7 @@
         },
         "getSchematicInfo": {
           "deprecated": true,
-          "description": "CoreUnit.getSchematicInfo(schematicId) is deprecated, use construct.getSchematic(id) instead.",
+          "description": "CoreUnit.getSchematicInfo(schematicId) is deprecated, use System.getSchematic(id) instead.",
           "isMethodStatic": true
         },
         "getAngularVelocity": {
@@ -2916,6 +3005,24 @@
           ],
           "isMethodStatic": true
         },
+        "getElementClassIdById": {
+          "description": "Returns the item id of the class of the Element, identified by its local ID",
+          "params": [
+            {
+              "name": "localId",
+              "type": "integer",
+              "description": "The local ID of the Element"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "name": "value",
+              "description": "The item ID of the item class"
+            }
+          ],
+          "isMethodStatic": true
+        },
         "getElementDisplayNameById": {
           "description": "Returns the display name of the Element, identified by its local ID",
           "params": [
@@ -2989,6 +3096,42 @@
               "type": "number",
               "name": "value",
               "description": ""
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "getElementRestorationsById": {
+          "description": "Returns the remaining restorations of the Element, identified by its local ID",
+          "params": [
+            {
+              "name": "localId",
+              "type": "integer",
+              "description": "The local ID of the Element"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "name": "value",
+              "description": "The restorations remaining for the Element"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "getElementMaxRestorationsById": {
+          "description": "Returns the maximum restorations of the Element, identified by its local ID",
+          "params": [
+            {
+              "name": "localId",
+              "type": "integer",
+              "description": "The local ID of the Element"
+            }
+          ],
+          "returns": [
+            {
+              "type": "integer",
+              "name": "value",
+              "description": "The max restorations for the Element"
             }
           ],
           "isMethodStatic": true
@@ -3096,7 +3239,7 @@
             {
               "type": "table",
               "name": "info",
-              "description": "If the Element is an Industry Unit, a table with fields {[int] state, [bool] stopRequested, [int] schematicId (deprecated = 0), [int] schematicsRemaining, [int] unitsProduced, [int] remainingTime, [int] batchesRequested, [int] batchesRemaining, [float] maintainProductAmount, [int] currentProductAmount, [table] currentProducts:{{[int] id, [double] quantity},...}}"
+              "description": "If the Element is an Industry Unit, a table with fields {[int] state, [bool] stopRequested, [int] schematicId (deprecated = 0), [int] schematicsRemaining (deprecated = 0), [table] requiredSchematicIds {[int] id}, [int] requiredSchematicAmount, [int] unitsProduced, [int] remainingTime, [int] batchesRequested, [int] batchesRemaining, [float] maintainProductAmount, [int] currentProductAmount, [table] currentProducts:{{[int] id, [double] quantity},...}}"
             }
           ],
           "isMethodStatic": true
@@ -3106,8 +3249,8 @@
           "description": "CoreUnit.getElementIndustryStatusById(localId) is deprecated, use CoreUnit.getElementIndustryInfoById(localId) instead.",
           "isMethodStatic": true
         },
-        "getElementTagsById": {
-          "description": "Returns the list of tags associated to the Element, identified by its local ID",
+        "getElementInPlugsById": {
+          "description": "Returns the Element IN plug map, identified by its local ID",
           "params": [
             {
               "name": "localId",
@@ -3117,9 +3260,130 @@
           ],
           "returns": [
             {
+              "type": "table",
+              "name": "plugMap",
+              "description": "The IN plug map of the Element as a table with fields per plug: {[int] type, [string] name, [int nullable] elementId, [bool] isRestricted, [list nullable] restrictedIds}"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "getElementOutPlugsById": {
+          "description": "Returns the Element OUT plug map, identified by its local ID",
+          "params": [
+            {
+              "name": "localId",
+              "type": "integer",
+              "description": "The local ID of the Element"
+            }
+          ],
+          "returns": [
+            {
+              "type": "table",
+              "name": "plugMap",
+              "description": "The OUT plug map of the Element as a table with fields per plug: {[int] type, [string] name, [int nullable] elementId, [bool] isRestricted, [list nullable] restrictedIds}"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "getEngineTagsById": {
+          "description": "Returns the list of engine tags for an Engine Element identified by its local ID",
+          "params": [
+            {
+              "name": "localId",
+              "type": "integer",
+              "description": "The local ID of the engine"
+            }
+          ],
+          "returns": [
+            {
               "type": "string",
               "name": "value",
-              "description": "The tags as a JSON list"
+              "description": "The CSV string of the tags"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "getElementTagsById": {
+          "deprecated": true,
+          "description": "CoreUnit.getElementTagsById(localId) is deprecated, use CoreUnit.getEngineTagsById(localId) instead.",
+          "isMethodStatic": true
+        },
+        "setEngineTagsById": {
+          "description": "Sets the list of engine tags for an Engine Element, identified by its local ID",
+          "params": [
+            {
+              "name": "localId",
+              "type": "integer",
+              "description": "The local ID of the engine"
+            },
+            {
+              "name": "tags",
+              "type": "string",
+              "description": "The CSV string of the tags"
+            },
+            {
+              "name": "ignore",
+              "type": "boolean",
+              "description": "(optional) True to ignore the default engine tags"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the tags have been applied, false if they have not"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "setEngineTorqueById": {
+          "description": "Sets the torque generation state for the Engine Element, identified by its local ID",
+          "params": [
+            {
+              "name": "localId",
+              "type": "integer",
+              "description": "The local ID of the engine"
+            },
+            {
+              "name": "state",
+              "type": "boolean",
+              "description": "True to enable engine torque"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "getEngineTorqueById": {
+          "description": "Returns the torque generation state for the Engine Element, identified by its local ID",
+          "params": [
+            {
+              "name": "localId",
+              "type": "integer",
+              "description": "The local ID of the engine"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the torque generation is enabled, false if it is not"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "isEngineIgnoringTagsById": {
+          "description": "Checks if the engine element is ignoring default tags, identified by its local ID",
+          "params": [
+            {
+              "name": "localId",
+              "type": "integer",
+              "description": "The local ID of the engine"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the engine ignores default engine tags, false if not"
             }
           ],
           "isMethodStatic": true
@@ -3299,9 +3563,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "success",
-              "description": "1 in case of success, 0 otherwise"
+              "description": "True if the sticker has been successfuly deleted, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -3332,9 +3596,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "success",
-              "description": "1 in case of success, 0 otherwise"
+              "description": "True if the sticker has been successfuly moved, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -3365,9 +3629,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "success",
-              "description": "1 in case of success, 0 otherwise"
+              "description": "True if the sticker has been successfuly rotated, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -3461,7 +3725,7 @@
           "isMethodStatic": true
         },
         "hasKey": {
-          "description": "Returns 1 if the key is present in the Databank, 0 otherwise",
+          "description": "Checks if the key is present in the Databank",
           "params": [
             {
               "name": "key",
@@ -3471,9 +3735,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the key exists and 0 otherwise"
+              "description": "True if the key exists, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -3489,9 +3753,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "success",
-              "description": "1 if the key has been successfully removed, 0 otherwise"
+              "description": "True if the key has been successfully removed, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -3676,9 +3940,9 @@
           "description": "Return the opening status of the door",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the door is open"
+              "description": "True if the door is open, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -3784,6 +4048,17 @@
           "description": "Element.getElementClass() is deprecated, use Element.getClass() instead.",
           "isMethodStatic": true
         },
+        "getClassId": {
+          "description": "Returns the item id of the class of the Element",
+          "params": [
+            {
+              "name": "return",
+              "type": "integer",
+              "description": "The item ID of the item class"
+            }
+          ],
+          "isMethodStatic": true
+        },
         "getMass": {
           "description": "Returns the mass of the element (includes the included items' mass when the Element is a Container)",
           "returns": [
@@ -3802,6 +4077,42 @@
               "type": "integer",
               "name": "value",
               "description": "The element item ID"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "isInClassId": {
+          "description": "Checks if the element is an element of the class given by its item id",
+          "params": [
+            {
+              "name": "classId",
+              "type": "integer",
+              "description": "The item ID of the item class"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "True",
+              "description": "if the element is a valid element of the given class, false otherwise"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "isInClass": {
+          "description": "Checks if the element is an element of the class given by its class name",
+          "params": [
+            {
+              "name": "className",
+              "type": "string",
+              "description": "The name of the item class"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the element is a valid element of the given class, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -3976,6 +4287,28 @@
           ],
           "isMethodStatic": true
         },
+        "getInPlugs": {
+          "description": "Returns the Element IN plug map",
+          "returns": [
+            {
+              "type": "table",
+              "name": "plugMap",
+              "description": "The IN plug map of the Element as a table with fields per plug: {[int] type, [string] name, [int nullable] elementId, [bool] isRestricted, [list nullable] restrictedIds}"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "getOutPlugs": {
+          "description": "Returns the Element OUT plug map",
+          "returns": [
+            {
+              "type": "table",
+              "name": "plugMap",
+              "description": "The OUT plug map of the Element as a table with fields per plug: {[int] type, [string] name, [int nullable] elementId, [bool] isRestricted, [list nullable] restrictedIds}"
+            }
+          ],
+          "isMethodStatic": true
+        },
         "setSignalIn": {
           "description": "Set the value of a signal in the specified IN plug of the Element.\nStandard plug names are built with the following syntax: direction-type-index. 'Direction' can be IN or OUT.\n'type' is one of the following: ITEM, FUEL, ELECTRICITY, SIGNAL, HEAT, FLUID, CONTROL, and 'index' is a number between 0 and\nthe total number of plugs of the given type in the given direction. Some plugs have special names like 'on' or 'off' for the\nManual Switch Unit. Just check in-game for the plug names if you have a doubt.",
           "params": [
@@ -4114,8 +4447,15 @@
             },
             {
               "name": "ignore",
-              "type": "boolean:",
+              "type": "boolean",
               "description": "True to ignore the default engine tags"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "success",
+              "description": "True if the tags have been applied, false if they have not"
             }
           ],
           "isMethodStatic": true
@@ -4124,9 +4464,9 @@
           "description": "Checks if the engine is ignoring default tags",
           "returns": [
             {
-              "type": "integer",
-              "name": "1",
-              "description": "if the engine ignores default engine tags"
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the engine ignores default engine tags, false if not"
             }
           ],
           "isMethodStatic": true
@@ -4265,9 +4605,9 @@
           "description": "Checks if the forcefield is deployed",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the forcefield is deployed"
+              "description": "True if the forcefield is deployed, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -4279,6 +4619,57 @@
         },
         "toggle": {
           "description": "Toggle the forcefield",
+          "isMethodStatic": true
+        },
+        "getCurrentLength": {
+          "description": "Returns the current length of the forcefield",
+          "returns": [
+            {
+              "type": "number",
+              "name": "value",
+              "description": "The current length of the forcefield"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "getMaxLength": {
+          "description": "Returns the maximum length of the forcefield",
+          "returns": [
+            {
+              "type": "number",
+              "name": "value",
+              "description": "The maximum length of the forcefield (between 0 and the limit of the forcefield model)"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "setMaxLength": {
+          "description": "Sets the max length of the forcefield",
+          "params": [
+            {
+              "name": "maxLength",
+              "type": "integer",
+              "description": "Maximum length (between 0 and the length limit)"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "success",
+              "description": "True if the maximum length was set, false if an error occurred"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "getLengthLimit": {
+          "description": "Returns the length limit of this forcefield model",
+          "returns": [
+            {
+              "type": "number",
+              "name": "value",
+              "description": "The length limit of this forcefield model"
+            }
+          ],
           "isMethodStatic": true
         }
       }
@@ -4298,9 +4689,9 @@
           "description": "Checks if the engine is active",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 when the engine is on"
+              "description": "True if the engine is on, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -4388,9 +4779,9 @@
           "description": "Checks if the torque generation is enabled on the engine",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the torque is enabled on the engine"
+              "description": "True if the torque is enabled on the engine, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -4464,9 +4855,9 @@
           "description": "Checks if the engine out of fuel",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 when there is no fuel left, 0 otherwise"
+              "description": "True if the engine is out of fuel, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -4497,9 +4888,9 @@
           "description": "Checks if the engine linked to a functional Fuel Tank (not broken or colliding)?",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 when the linked tank is functional, 0 otherwise"
+              "description": "True if the linked tank is functional, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -4560,6 +4951,7 @@
         }
       }
     },
+    "null": null,
     "Gyro": {
       "parent": "Element",
       "methods": {
@@ -4579,9 +4971,9 @@
           "description": "Returns the activation state of the gyro",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 when the gyro is the active ship orientation unit, 0 otherwise"
+              "description": "True if the gyro is the active ship orientation unit, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -4730,6 +5122,8 @@
           "isMethodStatic": true
         },
         "getStatus": {
+          "deprecated": true,
+          "description": "Industry.getStatus() is deprecated, use Industry.getState() instead.",
           "isMethodStatic": true
         },
         "getInfo": {
@@ -4738,7 +5132,7 @@
             {
               "type": "integer",
               "name": "value",
-              "description": "The complete state of the industry, a table with fields {[int] state, [bool] stopRequested, [int] schematicId (deprecated = 0), [int] schematicsRemaining, [int] unitsProduced, [int] remainingTime, [int] batchesRequested, [int] batchesRemaining, [float] maintainProductAmount, [int] currentProductAmount, [table] currentProducts:{{[int] id, [double] quantity},...}}"
+              "description": "The complete state of the industry, a table with fields {[int] state, [bool] stopRequested, [int] schematicId (deprecated = 0), [int] schematicsRemaining (deprecated = 0), [table] requiredSchematicIds {[int] id}, [int] requiredSchematicAmount, [int] unitsProduced, [int] remainingTime, [int] batchesRequested, [int] batchesRemaining, [float] maintainProductAmount, [int] currentProductAmount, [table] currentProducts:{{[int] id, [double] quantity},...}}"
             }
           ],
           "isMethodStatic": true
@@ -4788,6 +5182,17 @@
               "type": "table",
               "name": "outputs",
               "description": "Returns the list of products"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "getRequiredSchematicIds": {
+          "description": "Returns the list of item ids of the currently required schematics. Empty if there are no required schematic.",
+          "returns": [
+            {
+              "type": "table",
+              "name": "Returns",
+              "description": "the list of item ids of the currently required schematics"
             }
           ],
           "isMethodStatic": true
@@ -4927,9 +5332,9 @@
           "description": "Checks if the landing gear is deployed",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the landing gear is deployed"
+              "description": "True if the landing gear is deployed, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -4962,9 +5367,9 @@
           "description": "Checks if any laser is hitting the detector",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if a laser is hitting the detector"
+              "description": "True if a laser is hitting the detector, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -4995,9 +5400,9 @@
           "description": "Checks if the laser emitter is active",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the laser emitter is active"
+              "description": "True if the laser emitter is active, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -5107,9 +5512,9 @@
           "description": "Checks if the light is on",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the light is on"
+              "description": "True if the light is on, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -5180,9 +5585,9 @@
           "description": "Checks if the light blinking is enabled",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the light blinking is enabled"
+              "description": "True if the light blinking is enabled, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -5272,9 +5677,9 @@
           "description": "Checks if the manual button is down",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the manual button is down"
+              "description": "True if the manual button is down, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -5315,9 +5720,9 @@
           "description": "Checks if the switch is active",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the switch is active"
+              "description": "True if the switch is active, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -5874,9 +6279,9 @@
           "description": "Checks if the player is seated",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the player is seated"
+              "description": "True if the player is seated, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -5903,9 +6308,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the player is parented to the given construct"
+              "description": "True if the player is parented to the given construct, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -5914,9 +6319,9 @@
           "description": "Checks if the player is currently sprinting",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the player is sprinting"
+              "description": "True if the player is sprinting, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -5925,9 +6330,9 @@
           "description": "Checks if the player's jetpack is on",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the player's jetpack is on"
+              "description": "True if the player's jetpack is on, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -5936,9 +6341,9 @@
           "description": "Returns the state of the headlight of the player",
           "returns": [
             {
-              "type": "integer",
-              "name": "1",
-              "description": "if the player has his headlight on"
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the player has his headlight on, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -5949,7 +6354,7 @@
             {
               "name": "state",
               "type": "boolean",
-              "description": ": True to turn on headlight"
+              "description": "True to turn on headlight"
             }
           ],
           "isMethodStatic": true
@@ -5960,7 +6365,7 @@
             {
               "name": "state",
               "type": "boolean",
-              "description": "1 freeze the character, 0 unfreeze the character"
+              "description": "True to freeze the player, false to unfreeze"
             }
           ],
           "isMethodStatic": true
@@ -5969,9 +6374,9 @@
           "description": "Checks if the player movements are frozen",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the player is frozen, 0 otherwise"
+              "description": "True if the player is frozen, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -5980,9 +6385,9 @@
           "description": "Checks if the player has DRM autorization to the control unit",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the player has DRM autorization on the control unit"
+              "description": "True if the player has DRM autorization on the control unit, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -6023,9 +6428,9 @@
           "description": "Checks if the pressure tile is down",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 when the tile is down, 0 otherwise"
+              "description": "True when the tile is down, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -6041,7 +6446,7 @@
       "parent": "Element",
       "methods": {
         "getOperationalState": {
-          "description": "Returns 1 if the radar is not broken, works in the current environment and is not used by another control unit",
+          "description": "Checks if the radar is operational",
           "returns": [
             {
               "type": "integer",
@@ -6111,9 +6516,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "success",
-              "description": "1 if the sort method was set successfully, 0 otherwise"
+              "description": "True if the sort method was set successfully, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -6141,6 +6546,31 @@
               "name": "size",
               "type": "integer",
               "description": "Total entries to return following the offset, 0 to return all entries"
+            },
+            {
+              "name": "filter",
+              "type": "table",
+              "description": "(optional) The filters to be applied as a table {[bool] isMatching, [int] constructKind, [string] coreSize, [bool] isAbandoned}"
+            },
+            {
+              "name": "isMatching",
+              "type": "boolean",
+              "description": "(optional) True to filter out constructs with a matching transponder, false otherwise"
+            },
+            {
+              "name": "constructKind",
+              "type": "integer",
+              "description": "(optional) The construct kind id to filter out constructs (Universe = 1, Planet = 2, Asteroid = 3, Static = 4, Dynamic = 5, Space = 6, Alien = 7)"
+            },
+            {
+              "name": "coreSize",
+              "type": "string",
+              "description": "(optional) The construct core unit size to filter out constructs ('XS', 'S', 'M', 'L', 'XL')"
+            },
+            {
+              "name": "isAbandoned",
+              "type": "boolean",
+              "description": "(optional) True to filter out abandoned constructs, false otherwise"
             }
           ],
           "returns": [
@@ -6192,9 +6622,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the construct is identified, 0 otherwise"
+              "description": "True if the construct is identified, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -6210,9 +6640,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the construct has no owner, 0 otherwise"
+              "description": "True if the construct has no owner, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -6292,8 +6722,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
-              "description": ""
+              "type": "boolean",
+              "name": "value",
+              "description": "True if your Construct and the target have active Transponders with at least one matching tag, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -6352,7 +6783,7 @@
             {
               "type": "integer",
               "name": "kind",
-              "description": "The kind index of the construct (Universe = 1, Planet = 2,Asteroid = 3,Static = 4,Dynamic = 5,Space = 6,Alien = 7)"
+              "description": "The kind index of the construct (Universe = 1, Planet = 2, Asteroid = 3, Static = 4, Dynamic = 5, Space = 6, Alien = 7)"
             }
           ],
           "isMethodStatic": true
@@ -6621,9 +7052,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the channels list contains the given channel"
+              "description": "True if the channels list contains the given channel, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -6639,9 +7070,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "success",
-              "description": "1 if the channels list has been successfully set"
+              "description": "True if the channels list has been successfully set, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -7942,9 +8373,9 @@
           "description": "Checks if the screen is on",
           "returns": [
             {
-              "type": "integer",
-              "name": "1",
-              "description": "if the screen is on"
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the screen is on, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -8179,9 +8610,9 @@
           "description": "Returns the state of the mouse click",
           "returns": [
             {
-              "type": "integer",
-              "name": "1",
-              "description": "if the mouse is pressed, otherwise 0"
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the mouse is pressed, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -8200,8 +8631,8 @@
           "params": [
             {
               "name": "active",
-              "type": "integer",
-              "description": "1 if the element was activated, 0 otherwise"
+              "type": "boolean",
+              "description": "True if the element was activated, false otherwise"
             }
           ]
         },
@@ -8227,8 +8658,8 @@
           "params": [
             {
               "name": "active",
-              "type": "integer",
-              "description": "1 when venting is active, 0 otherwise"
+              "type": "boolean",
+              "description": "True when venting is active, false otherwise"
             },
             {
               "name": "restoredHitpoints",
@@ -8264,9 +8695,9 @@
           "description": "Returns the activation state of the shield",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 when the shield is active, 0 otherwise"
+              "description": "True when the shield is active, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -8302,9 +8733,9 @@
           "description": "Activate shield venting to restore hit points",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "state",
-              "description": "1 if venting started, 0 if an error occurred"
+              "description": "True if venting started, false if an error occurred"
             }
           ],
           "isMethodStatic": true
@@ -8313,9 +8744,9 @@
           "description": "Stop shield venting",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "state",
-              "description": "1 if venting stopped, 0 if an error occurred"
+              "description": "True if venting stopped, false if an error occurred"
             }
           ],
           "isMethodStatic": true
@@ -8324,9 +8755,9 @@
           "description": "Check whether venting is in progress",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "state",
-              "description": "1 if venting is ongoing, 0 otherwise"
+              "description": "True if venting is ongoing, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -8390,9 +8821,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "success",
-              "description": "1 if resistance was distributed, 0 if an error occurred"
+              "description": "True if resistance was distributed, false if an error occurred"
             }
           ],
           "isMethodStatic": true
@@ -8814,9 +9245,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 on success, 0 on failure."
+              "description": "True if the panel has been successfully destroyed, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -8855,9 +9286,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 on success, 0 on failure."
+              "description": "True if the widget has been successfully destroyed, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -8891,9 +9322,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 on success, 0 on failure."
+              "description": "True if the data has been successfully destroyed, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -8914,9 +9345,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 on success, 0 on failure."
+              "description": "True if the data has been successfully updated, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -8937,9 +9368,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 on success, 0 on failure."
+              "description": "True if the data has been successfully added to the widget, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -8960,9 +9391,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 on success, 0 on failure."
+              "description": "True if the data has been successfully removed from the widget, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -9097,9 +9528,9 @@
           "description": "Checks if the active camera is in first person view.",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if the camera is in first person view."
+              "description": "True if the camera is in first person view, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -9242,7 +9673,7 @@
             {
               "name": "state",
               "type": "boolean",
-              "description": "true to lock and false to unlock"
+              "description": "True to lock the view, false to unlock"
             }
           ],
           "isMethodStatic": true
@@ -9251,9 +9682,9 @@
           "description": "Return the lock state of the mouse free look",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 when locked and 0 when unlocked"
+              "description": "True if the view is locked, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -9377,7 +9808,233 @@
             {
               "type": "table",
               "name": "value",
-              "description": "An item table with fields: {[int] id, [string] name, [string] displayName, [string] locDisplayName, [string] displayNameWithSize, [string] locDisplayNameWithSize, [string] description, [string] locDescription, [string] type, [number] unitMass, [number] unitVolume, [integer] tier, [string] scale, [string] iconPath, [table] schematics, [table] products}"
+              "description": "An item table with fields: {[int] id, [string] name, [string] displayName, [string] locDisplayName, [string] displayNameWithSize, [string] locDisplayNameWithSize, [string] description, [string] locDescription, [string] type, [number] unitMass, [number] unitVolume, [integer] tier, [string] size, [string] iconPath, [table] schematics, [table] products}"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "isItemInClassId": {
+          "description": "Checks if the item is an item of the class identified by its item id",
+          "params": [
+            {
+              "name": "itemId",
+              "type": "integer",
+              "description": "The ID of the item"
+            },
+            {
+              "name": "classId",
+              "type": "integer",
+              "description": "The item ID of the item class"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the item is an item of the given class, false otherwise"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "isItemInClass": {
+          "description": "Checks if the given item is an item of the class given by its class name",
+          "params": [
+            {
+              "name": "itemId",
+              "type": "integer",
+              "description": "The ID of the item"
+            },
+            {
+              "name": "className[string]:",
+              "type": "The",
+              "description": "name of the item class"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the item is an item of the given class, false otherwise"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "isClassItem": {
+          "description": "Checks if the given item is a class item",
+          "params": [
+            {
+              "name": "itemId",
+              "type": "integer",
+              "description": "The ID of the item"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the item is a class item, false otherwise"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "isElementItem": {
+          "description": "Checks if the given item is an element",
+          "params": [
+            {
+              "name": "itemId",
+              "type": "integer",
+              "description": "The ID of the item"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the item is an element, false otherwise"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "isMaterialItem": {
+          "description": "Checks if the given item is a material",
+          "params": [
+            {
+              "name": "itemId",
+              "type": "integer",
+              "description": "The ID of the item"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the item is a material, false otherwise"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "isRawMaterialItem": {
+          "description": "Checks if the given item is a raw material",
+          "params": [
+            {
+              "name": "itemId",
+              "type": "integer",
+              "description": "The ID of the item"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the item is a raw material, false otherwise"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "isBlueprintItem": {
+          "description": "Checks if the given item is a blueprint",
+          "params": [
+            {
+              "name": "itemId",
+              "type": "integer",
+              "description": "The ID of the item"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the item is a blueprint, false otherwise"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "isScrapItem": {
+          "description": "Checks if the given item is a scrap item",
+          "params": [
+            {
+              "name": "itemId",
+              "type": "integer",
+              "description": "The ID of the item"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the item is a scrap item, false otherwise"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "isPartItem": {
+          "description": "Checks if the given item is a part",
+          "params": [
+            {
+              "name": "itemId",
+              "type": "integer",
+              "description": "The ID of the item"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the item is a part, false otherwise"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "isAmmoItem": {
+          "description": "Checks if the given item is an ammo item",
+          "params": [
+            {
+              "name": "itemId",
+              "type": "integer",
+              "description": "The ID of the item"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the item is an ammo item, false otherwise"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "isPackageItem": {
+          "description": "Checks if the given item is a package",
+          "params": [
+            {
+              "name": "itemId",
+              "type": "integer",
+              "description": "The ID of the item"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the item is a package, false otherwise"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "isSchematicItem": {
+          "description": "Checks if the given item is a schematic",
+          "params": [
+            {
+              "name": "itemId",
+              "type": "integer",
+              "description": "The ID of the item"
+            }
+          ],
+          "returns": [
+            {
+              "type": "boolean",
+              "name": "value",
+              "description": "True if the item is a schematic, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -9395,7 +10052,7 @@
             {
               "type": "table",
               "name": "value",
-              "description": "A list of recipe table with field: {[int] id, [int] tier,[double] time, [bool] nanocraftable, [table] products:{{[int] id, [double] quantity},...}, [table] ingredients:{{[int] id, [double] quantity},...}}"
+              "description": "A list of recipe table with field: {[integer] id, [integer] tier,[number] time, [bool] nanocraftable, [table] producers, [table] products:{{[integer] id, [number] quantity},...}, [table] ingredients:{{[integer] id, [number] quantity},...}}"
             }
           ],
           "isMethodStatic": true
@@ -9471,6 +10128,28 @@
           ],
           "isMethodStatic": true
         },
+        "getInstructionCount": {
+          "description": "Returns the current instruction count during this tick",
+          "returns": [
+            {
+              "type": "integer",
+              "name": "value",
+              "description": "The current instruction count during this tick"
+            }
+          ],
+          "isMethodStatic": true
+        },
+        "getInstructionLimit": {
+          "description": "Returns the instruction limit before the CPU overload",
+          "returns": [
+            {
+              "type": "integer",
+              "name": "value",
+              "description": "The instruction limit per tick"
+            }
+          ],
+          "isMethodStatic": true
+        },
         "showHelper": {
           "description": "Set the visibility of the helper top menu.\nNote that this function is disabled if the player is not running the script explicitly (pressing F on the Control Unit, vs. via a plug signal).",
           "params": [
@@ -9497,9 +10176,9 @@
           "description": "Checks if a sound is playing",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 if a sound is playing"
+              "description": "True if a sound is playing, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -9616,9 +10295,9 @@
           "description": "Checks if the transponder is active",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 when the transponder is active, 0 otherwise"
+              "description": "True if the transponder is active, false otherwise"
             }
           ],
           "isMethodStatic": true
@@ -9629,7 +10308,7 @@
           "isMethodStatic": true
         },
         "setTags": {
-          "description": "Set the tags list with up to 8 entries. Returns 1 if the application was successful, 0 if the tag\nformat is invalid.",
+          "description": "Set the tags list with up to 8 entries",
           "params": [
             {
               "name": "tags",
@@ -9639,9 +10318,9 @@
           ],
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "success",
-              "description": "1 if transponder tags were set, 0 if an error occurred"
+              "description": "True if transponder tags were set, false if an error occurred"
             }
           ],
           "isMethodStatic": true
@@ -9664,8 +10343,8 @@
           "params": [
             {
               "name": "active",
-              "type": "integer",
-              "description": "1 if the element was activated, 0 otherwise"
+              "type": "boolean",
+              "description": "True if the element was activated, false otherwise"
             }
           ]
         },
@@ -9873,15 +10552,15 @@
           "description": "Checks if the weapon is out of ammo",
           "returns": [
             {
-              "type": "integer",
+              "type": "boolean",
               "name": "value",
-              "description": "1 the weapon is out of ammo"
+              "description": "True if the weapon is out of ammo, false otherwise"
             }
           ],
           "isMethodStatic": true
         },
         "getOperationalState": {
-          "description": "Returns 1 if the weapon is not broken and compatible with the construct size",
+          "description": "Checks if the weapon is operational",
           "returns": [
             {
               "type": "integer",
@@ -9902,7 +10581,7 @@
             {
               "type": "integer",
               "name": "status",
-              "description": "The current status of the weapon (Idle = 1, Firing = 2, Reloading = 3, Unloading = 4)"
+              "description": "The current status of the weapon (Idle = 1, Firing = 2, Stopping = 3, Reloading = 4, Unloading = 5, FiringBlocked = 6)"
             }
           ],
           "isMethodStatic": true
