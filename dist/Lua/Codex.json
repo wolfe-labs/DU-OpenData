@@ -4951,7 +4951,6 @@
         }
       }
     },
-    "null": null,
     "Gyro": {
       "parent": "Element",
       "methods": {
